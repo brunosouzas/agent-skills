@@ -1,0 +1,16 @@
+{
+  "name": "agent-skills",
+  "owner": {
+    "name": "Bruno Souza"
+  },
+  "metadata": {
+    "description": "Specialty skills for software engineering agents: one plugin per technology family."
+  },
+  "plugins": [
+    {
+      "name": "mulesoft",
+      "source": "./plugins/mulesoft",
+      "description": "Mule 4 applications, DataWeave, MUnit and the Mule SDK: rules with stable IDs and checks that run."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+name: Release
+
+# Releases (docs/releasing.md): on every push to main, release-please keeps one
+# release pull request that bumps each changed skill's metadata.version and
+# CHANGELOG.md, and the plugin's; merging it tags each release
+# (<skill>-vX.Y.Z, mulesoft-plugin-vX.Y.Z) and creates its GitHub release.
+# The reusable workflow runs as a GitHub App, because a pull request opened
+# with GITHUB_TOKEN starts no checks.
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  release-please:
+    uses: brunosouzas/github-reusable-workflows/.github/workflows/release-please.yml@v0.1.0
+    secrets:
+      release-app-private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}

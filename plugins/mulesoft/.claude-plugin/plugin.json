@@ -1,0 +1,12 @@
+{
+  "name": "mulesoft",
+  "displayName": "MuleSoft",
+  "description": "Mule 4 applications, DataWeave, MUnit and the Mule SDK: rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": ["mulesoft", "mule-4", "dataweave", "munit", "mule-sdk", "anypoint"]
+}

@@ -1,0 +1,43 @@
+schema_version: "1.1"
+name: mulesoft-review-flow
+description: "Routing: must load mulesoft and none of dataweave, munit, mule-sdk."
+tags: [routing, mulesoft]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Revisa esse flow Mule 4 antes do PR (só o XML, sem DataWeave):
+
+    <flow name="orders-main">
+      <http:listener config-ref="HTTP_Listener_config" path="/orders"/>
+      <set-variable variableName="orderId" value="#[attributes.queryParams.id]" doc:name="Set Variable"/>
+      <http:request method="GET" url="https://crm.internal:8443/orders"/>
+      <logger level="INFO" message="#[payload]"/>
+    </flow>
+graders:
+  - name: loads-mulesoft
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?mulesoft"'
+  - name: does-not-load-dataweave
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?dataweave"'
+    min: 0
+    max: 0
+    arm: both
+  - name: does-not-load-munit
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?munit"'
+    min: 0
+    max: 0
+    arm: both
+  - name: does-not-load-mule-sdk
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?mule-sdk"'
+    min: 0
+    max: 0
+    arm: both
