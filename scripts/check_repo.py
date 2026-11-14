@@ -61,8 +61,10 @@ PERSONAL_FACTS = [
     (re.compile(r"\bAB#\d+"), "a board card"),
     (re.compile(r"/Users/|~/code/"), "a personal path"),
     (re.compile(r"\bJAVA_HOME\b"), "an environment fact"),
-    (re.compile(r"\bvault\b", re.I), "a personal vault"),
-    (re.compile(r"\bplaybook\b", re.I), "a process (playbook)"),
+    (re.compile(r"\b(notes|obsidian|brain) vault\b|\bobsidian\b", re.I), "a notes vault"),
+    (re.compile(r"\bmacOS\b|/usr/libexec/"), "an operating-system fact"),
+    (re.compile(r"\bplaybooks?\b", re.I), "a process (playbook)"),
+    (re.compile(r"\bmulesoft-delivery\b|\bMDEL-\d|\bBRU-[A-Z]+-\d"), "a personal process skill or profile"),
     (re.compile(r"\bbruno\b|\bbrunosouzas\b", re.I), "a person"),
 ]
 

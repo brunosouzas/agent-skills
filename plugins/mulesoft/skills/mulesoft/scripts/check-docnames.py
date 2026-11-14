@@ -5,7 +5,8 @@ What it does
     Reads every Mule configuration file (root element <mule>) under the paths
     given and reports, with file and line:
     - FLOW-2: a processor or scope directly inside a flow, sub-flow, try, when,
-      otherwise, foreach, route, on-error-* or until-successful that has no
+      otherwise, foreach, parallel-foreach, async, route, error-handler,
+      on-error-* or until-successful that has no
       doc:name, or whose doc:name is a palette default ("Transform Message",
       "Logger", "Choice"...);
     - FLOW-4: a flow or sub-flow without doc:description.
@@ -19,15 +20,16 @@ How to run
     python3 check-docnames.py [PATH ...]
     PATH is a file or a folder (searched for *.xml); the default is
     src/main/mule. Python 3.9 or newer, standard library only.
-    Exit code: 0 nothing found, 1 findings printed, 2 a file could not be read
-    or parsed (printed on stderr; the other files are still checked).
+    Exit code: 0 nothing found, 1 findings printed, 2 a path does not exist
+    or a file could not be read or parsed (printed on stderr; the other files
+    are still checked).
 
 What can go wrong
     - A file that is not well-formed XML cannot be checked: it is reported and
       the exit code is 2. Fix the XML first (Studio would not open it either).
     - Only direct children of the scopes above are checked, as the rule says.
-      Value elements (ee:message, http:headers...) and error-handler are not
-      processors and are skipped.
+      Value elements (ee:message, http:headers...) are not processors and are
+      skipped; the on-error-* handlers inside an error-handler are checked.
     - The palette default list is the common Studio set, not every connector's
       default; a connector default not in the list is not reported.
 """
@@ -44,8 +46,9 @@ DOC = "http://www.mulesoft.org/schema/mule/documentation"
 
 # FLOW-2: the scopes whose direct children must be named.
 CONTAINERS = {
-    "flow", "sub-flow", "try", "when", "otherwise", "foreach", "route",
-    "on-error-propagate", "on-error-continue", "until-successful",
+    "flow", "sub-flow", "try", "when", "otherwise", "foreach", "parallel-foreach",
+    "async", "route", "error-handler", "on-error-propagate", "on-error-continue",
+    "until-successful",
 }
 
 # Children of those scopes that are structure or values, not processors.
@@ -134,7 +137,9 @@ def check_file(path):
     parser.setFeature(xml.sax.handler.feature_external_ges, False)
     finder = Finder()
     parser.setContentHandler(finder)
-    parser.parse(str(path))
+    # A file object, not a string: sax reads a string as a URL and would fetch it.
+    with open(path, "rb") as stream:
+        parser.parse(stream)
     return finder.findings
 
 
@@ -144,11 +149,16 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     found = broken = 0
-    for path in xml_files(args.paths):
+    # A path that does not exist is an error, not "nothing found".
+    for path in args.paths:
+        if not path.exists():
+            print(f"{path}: no such file or folder", file=sys.stderr)
+            broken += 1
+    for path in xml_files(p for p in args.paths if p.exists()):
         # A file that cannot be read is reported, and the others still run.
         try:
             findings = check_file(path)
-        except (OSError, xml.sax.SAXException) as error:
+        except (OSError, ValueError, xml.sax.SAXException) as error:
             print(f"{path}: cannot check: {error}", file=sys.stderr)
             broken += 1
             continue

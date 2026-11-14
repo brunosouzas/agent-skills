@@ -1,10 +1,10 @@
 ---
 name: mule-sdk
-description: "Rules for shared Mule 4 assets that other applications depend on: connectors built with the Mule SDK (Java SDK), shared Mule plugins and DataWeave libraries published to Exchange or a Maven repository. Covers the public contract of exported operations and functions, semantic versioning of the asset, and connection management in connectors. Use when writing, changing or reviewing such an asset; recognise it by a pom.xml with mule-extension, mule-plugin or dw-library packaging, or @Extension and @Operations classes. Triggers: Mule SDK, Mule extension, Mule connector, custom connector, Mule plugin, dw-library. Not for a Mule application (mulesoft skill), the DataWeave code inside a library (dataweave skill) or a standalone Java library (no Mule packaging)."
+description: "Rules for shared Mule 4 assets that other applications depend on: connectors built with the Mule SDK (Java SDK), shared Mule plugins (mule-plugin packaging) and DataWeave libraries published to Exchange or a Maven repository. Covers the public contract of exported operations and functions, semantic versioning of the asset, and connection management in connectors. Use when writing, changing or reviewing such an asset; recognise it by a pom.xml with mule-extension, mule-plugin or dw-library packaging, or @Extension and @Operations classes. Triggers: Mule SDK, Mule extension, Mule connector, custom connector, shared Mule plugin, mule-plugin packaging, dw-library. Not for a Mule application or the Mule Maven Plugin's deployment configuration (mulesoft skill), the DataWeave code inside a library (dataweave skill) or a standalone Java library (no Mule packaging)."
 license: Apache-2.0
 metadata:
   version: "1.0.0" # x-release-please-version
-  aliases: "mule sdk, mule extension, mule connector, mule plugin, dw-library"
+  aliases: "mule sdk, mule extension, mule connector, mule-plugin, dw-library"
 ---
 
 # Mule SDK and shared assets

@@ -19,6 +19,6 @@ An agent loads the skill whose `name` or one of whose `metadata.aliases` matches
 | MuleSoft, Mule, Mule 4, Anypoint, APIkit, CloudHub | `mulesoft` |
 | DataWeave, DataWeave 2, DWL | `dataweave` |
 | MUnit, MUnit 3, MUnit Tools | `munit` |
-| Mule SDK, Mule extension, Mule connector, Mule plugin, dw-library | `mule-sdk` |
+| Mule SDK, Mule extension, Mule connector, mule-plugin, dw-library | `mule-sdk` |
 
 Without a `Stack:` line, each skill's `description` still routes the request by what the files look like (a `pom.xml` with `mule-application` packaging, a `.dwl` file).

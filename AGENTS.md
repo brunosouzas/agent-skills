@@ -5,7 +5,7 @@ A marketplace of agent skills for software engineering, one plugin per technolog
 ## Technology
 
 Stack: Python, Markdown
-Delivery: B package
+Delivery: B package (a published package: a merge releases nothing until the release pull request is merged)
 Integration branch: `main`
 
 - Check: `python3 scripts/check_repo.py`

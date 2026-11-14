@@ -36,7 +36,7 @@ import sys
 TYPES = "feat|fix|perf|revert|docs|refactor|test|chore|ci|build|style"
 TITLE_RE = re.compile(rf"^(?P<type>{TYPES})(\((?P<scope>[^)]+)\))?(?P<breaking>!)?: \S")
 SKILL_PATH_RE = re.compile(r"^plugins/[^/]+/skills/(?P<skill>[^/]+)/")
-RELEASE_TITLE_RE = re.compile(r"^chore(\([^)]*\))?: release\b")
+RELEASE_TITLE_RE = re.compile(r"^chore\(main\): release( main)?\b")
 
 
 def problems(title, files):
@@ -57,8 +57,10 @@ def problems(title, files):
 
 def changed_files(base):
     # Three dots: what the branch changed since it left the base.
-    result = subprocess.run(["git", "diff", "--name-only", f"{base}...HEAD"], check=True, capture_output=True, text=True)
-    return result.stdout.split()
+    # --no-renames lists a moved file under both paths, so moving a file out of
+    # a skill still names that skill; -z keeps paths with spaces whole.
+    result = subprocess.run(["git", "diff", "--name-only", "--no-renames", "-z", f"{base}...HEAD"], check=True, capture_output=True, text=True)
+    return [f for f in result.stdout.split("\0") if f]
 
 
 def main(argv=None):

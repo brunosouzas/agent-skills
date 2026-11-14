@@ -123,6 +123,38 @@ payload]]></ee:set-payload></ee:message>
         self.assertIn("bad.xml: cannot check", err)
         self.assertIn("FLOW-4 flow 'f'", out)
 
+    def test_async_and_parallel_foreach_children_are_checked(self):
+        code, out, _ = self.run_script({"a.xml": mule("""
+  <flow name="f" doc:description="d">
+    <async doc:name="Notify CRM in Background"><logger message="x"/></async>
+    <parallel-foreach doc:name="For Each Order Line" collection="#[payload]"><set-variable variableName="v" value="1"/></parallel-foreach>
+  </flow>""")})
+        self.assertEqual(code, 1)
+        self.assertIn("<logger> has no doc:name", out)
+        self.assertIn("<set-variable> has no doc:name", out)
+
+    def test_error_handlers_inside_error_handler_are_checked(self):
+        code, out, _ = self.run_script({"a.xml": mule("""
+  <flow name="f" doc:description="d">
+    <logger doc:name="INFO: Log Start"/>
+    <error-handler>
+      <on-error-continue type="ANY"><logger doc:name="ERROR: Log Failure"/></on-error-continue>
+      <on-error-propagate doc:name="On Error Propagate" type="HTTP:NOT_FOUND"/>
+    </error-handler>
+  </flow>
+  <error-handler name="global-error-handler"><on-error-propagate doc:name="On Error Propagate (Any)" type="ANY"/></error-handler>""")})
+        self.assertEqual(code, 1)
+        self.assertIn("<on-error-continue> has no doc:name", out)
+        self.assertIn("<on-error-propagate> keeps the palette default name 'On Error Propagate'", out)
+        self.assertNotIn("(Any)", out)
+
+    def test_missing_path_exits_2(self):
+        err = io.StringIO()
+        with redirect_stdout(io.StringIO()), redirect_stderr(err):
+            code = check_docnames.main(["no/such/folder", "http://example.invalid/flow.xml"])
+        self.assertEqual(code, 2)
+        self.assertIn("no/such/folder: no such file or folder", err.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

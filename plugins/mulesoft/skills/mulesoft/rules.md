@@ -2,7 +2,7 @@
 
 Rules for Mule 4 applications, from MuleSoft's published best practices (Catalyst *Mule Development Standards*), the platform's documented behaviour and practice in reference projects. In an existing project, follow the conventions it already uses and report a difference instead of renaming; these rules decide new projects and new files. A rule marked `(locked)` protects secrets, personal data or sensitive logs: a project's own convention never overrides it.
 
-Rules for the other parts of a Mule project live in their own skills, with their own IDs: DataWeave (`DW`, `DWTEST`) in `dataweave`, MUnit (`MUNIT`) in `munit`, shared assets (`ASSET`) in `mule-sdk`.
+Rules for the other parts of a Mule project live in their own skills of this plugin, with their own IDs; read them when those skills are installed: DataWeave (`DW`, `DWTEST`) in `dataweave`, MUnit (`MUNIT`) in `munit`, shared assets (`ASSET`) in `mule-sdk`.
 
 How to change this file (see CONTRIBUTING.md of this repository):
 - **Add a rule:** copy an item, give it the next number in its group, write the rule, why it exists and how to check it. A new rule is a MINOR version.
@@ -17,7 +17,7 @@ How to change this file (see CONTRIBUTING.md of this repository):
 
 - **FLOW-2** Every processor and scope has an explicit `doc:name` that says what it does; never a missing name, never the palette default (`Transform Message`, `Set Variable`, `Logger`, `Try`, `Choice`, `Scatter-Gather`). Patterns per type: FLOW-5.
   Why: the Studio canvas, logs and Anypoint Monitoring show these names; a flow of unnamed `Set Variable` and `Choice` boxes can only be read by opening each one. A missing `doc:name` is as bad as a default one: Studio shows the component type.
-  Check: in `src/main/mule/**/*.xml`, every child of `flow`, `sub-flow`, `try`, `when`, `otherwise`, `foreach`, `route`, `on-error-*` and `until-successful` has `doc:name`, except value elements (`ee:message`, `ee:variables`, `http:headers`, `http:body` and similar), and none equals its palette default. `scripts/check-docnames.py` checks this.
+  Check: in `src/main/mule/**/*.xml`, every child of `flow`, `sub-flow`, `try`, `when`, `otherwise`, `foreach`, `parallel-foreach`, `async`, `route`, `error-handler`, `on-error-*` and `until-successful` has `doc:name`, except value elements (`ee:message`, `ee:variables`, `http:headers`, `http:body` and similar), and none equals its palette default. `scripts/check-docnames.py` checks this.
 
 - **FLOW-3** Global elements (listeners, requesters, connectors) are defined once in the global configuration file (LAYOUT-2) and referenced by name; their display name is `<Purpose> <Type> Config` (`Main Http Listener Config`, `Secure Properties Config`).
   Why: duplicated configs drift apart and multiply connection pools.

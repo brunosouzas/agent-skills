@@ -1,8 +1,11 @@
 # mulesoft plugin
 
 ```bash
-/plugin install mulesoft --marketplace brunosouzas/agent-skills
+claude plugin marketplace add brunosouzas/agent-skills
+claude plugin install mulesoft@brunosouzas-agent-skills
 ```
+
+Codex: `codex plugin marketplace add brunosouzas/agent-skills`, then `codex plugin add mulesoft@brunosouzas-agent-skills`.
 
 Skills for Mule 4 work. Each one loads on its own, from its `description`, so a DataWeave question loads only `dataweave`.
 

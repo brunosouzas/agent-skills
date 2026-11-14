@@ -14,6 +14,6 @@ permissions: {}
 
 jobs:
   release-please:
-    uses: brunosouzas/github-reusable-workflows/.github/workflows/release-please.yml@v0.1.0
+    uses: brunosouzas/github-reusable-workflows/.github/workflows/release-please.yml@beedbe96ffdf261ed619c87959c009fdedae331d # v0.1.0
     secrets:
       release-app-private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}

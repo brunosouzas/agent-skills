@@ -45,6 +45,10 @@ class CommitScopeTest(unittest.TestCase):
 
     def test_release_pull_request_is_exempt(self):
         self.assertEqual(check_commit_scope.problems("chore(main): release dataweave 1.1.0", [DW]), [])
+        self.assertEqual(check_commit_scope.problems("chore(main): release main", [DW]), [])
+
+    def test_a_chore_that_only_looks_like_a_release_is_not_exempt(self):
+        self.assertTrue(check_commit_scope.problems("chore: release everything now", [DW]))
 
 
 class FrontmatterTest(unittest.TestCase):
