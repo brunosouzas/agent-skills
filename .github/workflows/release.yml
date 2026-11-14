@@ -4,8 +4,11 @@ name: Release
 # release pull request that bumps each changed skill's metadata.version and
 # CHANGELOG.md, and the plugin's; merging it tags each release
 # (<skill>-vX.Y.Z, mulesoft-plugin-vX.Y.Z) and creates its GitHub release.
-# The reusable workflow runs as a GitHub App, because a pull request opened
-# with GITHUB_TOKEN starts no checks.
+# The reusable workflow (v0.1.0) runs as this repository's own release GitHub
+# App, because a pull request opened with GITHUB_TOKEN starts no checks. The
+# app comes from the environment release-please (main only): the variable
+# RELEASE_APP_CLIENT_ID and the secret RELEASE_APP_PRIVATE_KEY, which the call
+# passes by name (docs/releasing.md).
 on:
   push:
     branches: [main]
@@ -16,4 +19,4 @@ jobs:
   release-please:
     uses: brunosouzas/github-reusable-workflows/.github/workflows/release-please.yml@beedbe96ffdf261ed619c87959c009fdedae331d # v0.1.0
     secrets:
-      release-app-private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+      RELEASE_APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}

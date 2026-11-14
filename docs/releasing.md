@@ -28,10 +28,13 @@ release-please release-pr --repo-url=<owner>/agent-skills --target-branch=<scrat
 
 ## Setup on GitHub (once)
 
-1. The release GitHub App of the reusable workflow (its default `app-id`), installed on this repository, with its private key in the secret `RELEASE_APP_PRIVATE_KEY`. The workflow asks GitHub for a token limited to the calling repository. A pull request opened with `GITHUB_TOKEN` starts no checks, so release-please needs the app.
-2. A tag ruleset on `*-v*` (the tags above) that only the app can create, and a ruleset on `main` requiring a pull request and the checks `check` and `pr-title`.
-3. Squash merges only, with the pull request title as the commit title.
+The release workflow calls `release-please.yml` of `brunosouzas/github-reusable-workflows` at `v0.1.0` (pinned by commit), which runs as **this repository's own release GitHub App**:
+
+1. A GitHub App for this repository (Contents, Pull requests and Issues read and write, no webhook), installed on this repository only. A pull request opened with `GITHUB_TOKEN` starts no checks, so release-please needs the app.
+2. An environment `release-please` (deployment branches: `main` only, no reviewer) with the variable `RELEASE_APP_CLIENT_ID` (the app's Client ID) and the secret `RELEASE_APP_PRIVATE_KEY` (its private key, PEM). The call passes the secret by name; the reusable job reads both from the environment and asks GitHub for a token limited to this repository.
+3. A tag ruleset on `refs/tags/*-v*` (the tags above: creation, update and deletion blocked) with the app as an `Integration` bypass, so only release-please makes tags.
+4. Squash merges only, with the pull request title as the commit title (`allow_merge_commit=false`, `allow_rebase_merge=false`, `squash_merge_commit_title=PR_TITLE`), then a ruleset on `main` requiring a pull request and the checks `check` and `pr-title`.
 
 ## The first release
 
-The manifest starts every package at `1.0.0`, and each `CHANGELOG.md` already has its `1.0.0 (initial)` entry. `bootstrap-sha` in the config is the repository's first commit: release-please counts only the commits after it. The pull request that imports the first plugin is titled with `chore(...)`, which releases nothing, so the first release pull request appears only with the first `feat` or `fix` after it.
+The manifest starts every package at `1.0.0`, and each `CHANGELOG.md` already has its `1.0.0 (initial)` entry. `bootstrap-sha` in the config is the merge commit of the pull request that imported the plugin (`6bb78e6`): release-please counts only the commits after it, so the commits of that import do not release anything. The first release pull request appears with the first `feat` or `fix` that touches a skill or a plugin after it.
