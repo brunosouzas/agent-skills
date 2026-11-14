@@ -28,10 +28,10 @@ release-please release-pr --repo-url=<owner>/agent-skills --target-branch=<scrat
 
 ## Setup on GitHub (once)
 
-The release workflow calls `release-please.yml` of `brunosouzas/github-reusable-workflows` at `v0.1.0` (pinned by commit), which runs as **this repository's own release GitHub App**:
+The release workflow calls `release-please.yml` of `brunosouzas/github-reusable-workflows` at `v0.1.0` (pinned by commit), which runs as a **release GitHub App** installed on this repository (today `brunosouzas-delivery-release`, App ID `5609269`):
 
-1. A GitHub App for this repository (Contents, Pull requests and Issues read and write, no webhook), installed on this repository only. A pull request opened with `GITHUB_TOKEN` starts no checks, so release-please needs the app.
-2. An environment `release-please` (deployment branches: `main` only, no reviewer) with the variable `RELEASE_APP_CLIENT_ID` (the app's Client ID) and the secret `RELEASE_APP_PRIVATE_KEY` (its private key, PEM). The call passes the secret by name; the reusable job reads both from the environment and asks GitHub for a token limited to this repository.
+1. The app has Contents, Pull requests and Issues read and write. A pull request opened with `GITHUB_TOKEN` starts no checks, so release-please needs the app; the token it gets is limited to this repository.
+2. An environment `release-please` (deployment branches: `main` only, no reviewer) with the variable `RELEASE_APP_CLIENT_ID` (the app's Client ID or App ID; here the App ID) and the secret `RELEASE_APP_PRIVATE_KEY` (its private key, PEM). The call passes the secret by name; the reusable job reads both from the environment and asks GitHub for a token limited to this repository.
 3. A tag ruleset on `refs/tags/*-v*` (the tags above: creation, update and deletion blocked) with the app as an `Integration` bypass, so only release-please makes tags.
 4. Squash merges only, with the pull request title as the commit title (`allow_merge_commit=false`, `allow_rebase_merge=false`, `squash_merge_commit_title=PR_TITLE`), then a ruleset on `main` requiring a pull request and the checks `check` and `pr-title`.
 
