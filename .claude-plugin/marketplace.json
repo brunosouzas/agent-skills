@@ -11,6 +11,26 @@
       "name": "mulesoft",
       "source": "./plugins/mulesoft",
       "description": "Mule 4 applications, DataWeave, MUnit and the Mule SDK: rules with stable IDs and checks that run."
+    },
+    {
+      "name": "api",
+      "source": "./plugins/api",
+      "description": "REST API specifications in RAML and OpenAPI: resources, data types, errors, examples, versioning and security, as rules with stable IDs."
+    },
+    {
+      "name": "languages",
+      "source": "./plugins/languages",
+      "description": "Java, Python and shell: build and environment, code, tests and portability rules with stable IDs, and checks that run."
+    },
+    {
+      "name": "devops",
+      "source": "./plugins/devops",
+      "description": "Azure Pipelines, GitHub Actions and Jenkins: templates, permissions, secrets, triggers and deploys, as rules with stable IDs and checks that run."
+    },
+    {
+      "name": "web",
+      "source": "./plugins/web",
+      "description": "Astro static sites and Cloudflare Workers and Pages: builds, webhooks, secrets, staging and production, as rules with stable IDs."
     }
   ]
 }

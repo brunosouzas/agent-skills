@@ -1,0 +1,12 @@
+{
+  "name": "devops-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Version record of the devops plugin for release-please; its dependencies are its skills, so a skill release raises the plugin's version. Not an npm package.",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "azure-devops": "1.0.0",
+    "github-actions": "1.0.0",
+    "jenkins": "1.0.0"
+  }
+}

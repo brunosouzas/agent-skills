@@ -1,0 +1,22 @@
+schema_version: "1.1"
+name: astro-page-brace
+description: "Routing: must load astro and none of cloudflare."
+tags: [routing, astro]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    On our Astro site, a new component src/components/CodeHint.astro shows an empty space where it should print a literal { } in an SVG <text>. Fix it and make sure astro check passes.
+graders:
+  - name: loads-astro
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?astro"'
+  - name: does-not-load-cloudflare
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?cloudflare"'
+    min: 0
+    max: 0
+    arm: both

@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "displayName": "API specs",
+  "description": "REST API specifications in RAML and OpenAPI: resources, data types, errors, examples, versioning and security, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api",
+    "raml",
+    "openapi",
+    "oas",
+    "swagger",
+    "rest"
+  ]
+}

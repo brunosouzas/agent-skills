@@ -1,0 +1,15 @@
+schema_version: "1.1"
+name: api-spec-raml-endpoint
+description: "Routing: must load api-spec."
+tags: [routing, api-spec]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Add a GET /customers/{customerId}/orders resource to our RAML 1.0 spec (api.raml), with a paginated response type and the 404 error example.
+graders:
+  - name: loads-api-spec
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?api-spec"'

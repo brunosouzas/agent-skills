@@ -1,6 +1,6 @@
 # Contributing
 
-This repository is a marketplace of plugins; each plugin holds specialty skills for one technology family (today `mulesoft`). A specialty skill says what is particular to a technology: its rules, how to check them, and when to use it. It never says how a team works: processes, reviews and delivery belong to whoever installs the skills.
+This repository is a marketplace of plugins; each plugin holds specialty skills for one technology family (`mulesoft`, `api`, `languages`, `devops`, `web`). A specialty skill says what is particular to a technology: its rules, how to check them, and when to use it. It never says how a team works: processes, reviews and delivery belong to whoever installs the skills.
 
 ## Writing rules
 

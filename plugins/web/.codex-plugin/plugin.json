@@ -1,0 +1,24 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "Astro static sites and Cloudflare Workers and Pages: builds, webhooks, secrets, staging and production, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Web",
+    "shortDescription": "Astro and Cloudflare Workers and Pages",
+    "longDescription": "Rules with stable IDs for Astro static sites (clean builds, markup pitfalls, links) and Cloudflare Workers and Pages (wrangler config, webhook signatures, Durable Object migrations, staging and production deploys, rollbacks).",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Build Astro sites",
+      "Write Cloudflare Workers",
+      "Deploy to Cloudflare Pages"
+    ]
+  }
+}

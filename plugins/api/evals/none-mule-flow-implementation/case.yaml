@@ -1,0 +1,18 @@
+schema_version: "1.1"
+name: none-mule-flow-implementation
+description: "Routing: a request outside the plugin must load none of api-spec."
+tags: [routing, negative]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    In this Mule 4 app, the flow get:\customers:api-config should call the CRM system API and map its response. Fix the HTTP request config's timeout in src/main/mule/customers.xml.
+graders:
+  - name: does-not-load-api-spec
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?api-spec"'
+    min: 0
+    max: 0
+    arm: both
