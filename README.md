@@ -14,12 +14,17 @@ Claude Code:
 
 ```bash
 claude plugin marketplace add brunosouzas/agent-skills
-claude plugin install mulesoft@agent-skills
+claude plugin install mulesoft@brunosouzas-agent-skills
 ```
 
 From a local clone, pass its path to `claude plugin marketplace add` instead.
 
-Codex: add the marketplace in `.agents/plugins/marketplace.json` of this repository (`codex plugin marketplace add brunosouzas/agent-skills`, or the local path), then install `mulesoft` from it. Codex gets the skills only.
+Codex (skills only):
+
+```bash
+codex plugin marketplace add brunosouzas/agent-skills
+codex plugin add mulesoft@brunosouzas-agent-skills
+```
 
 Other tools that read Agent Skills: copy or link `plugins/<plugin>/skills/<skill>/` into the tool's skills folder.
 

@@ -16,7 +16,7 @@ release-please gives a commit to a package by the files it changes, taking the d
 ## How a plugin's update reaches users
 
 - **Claude Code** computes a plugin's version from the commit when `plugin.json` sets none. The Claude `plugin.json` and the marketplace entry therefore set no `version`, and every merged change reaches users on their next update. `scripts/check_repo.py` refuses a `version` there.
-- **Codex** reads the `version` of `.codex-plugin/plugin.json`, which the plugin package raises. Because a skill-only commit belongs to the skill's package, not the plugin's, a release that changes only skills does not raise the plugin's version today. Until this is settled, a pull request that changes a skill and must reach Codex users also needs a plugin-level change (for example a line in the plugin's README) in the same commit.
+- **Codex** installs a plugin into a cache folder named after the `version` of `.codex-plugin/plugin.json` (`plugins/cache/<marketplace>/<plugin>/<version>/`), which the plugin package raises. Because a skill-only commit belongs to the skill's package, not the plugin's, a release that changes only skills does not raise the plugin's version today. Until this is settled, a pull request that changes a skill and must reach Codex users also needs a plugin-level change (for example a line in the plugin's README) in the same commit.
 
 ## Setup on GitHub (once)
 
