@@ -1,0 +1,61 @@
+name: CI
+
+# Checks every pull request and every push to main:
+# - check: the marketplace, plugins and skills follow CONTRIBUTING.md
+#   (scripts/check_repo.py; on a pull request it also refuses a removed rule ID)
+#   and the tests of the scripts pass;
+# - pr-title: the pull request title is a Conventional Commit whose scope names
+#   every skill it touches (scripts/check_commit_scope.py), because the title
+#   becomes the squash commit release-please writes each changelog from.
+# Python comes from the runner image; the scripts use the standard library only.
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Repository rules
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          set -euo pipefail
+          if [ -n "$BASE_REF" ]; then
+            python3 scripts/check_repo.py --base "$BASE_REF"
+          else
+            python3 scripts/check_repo.py
+          fi
+      - name: Tests
+        run: python3 -m unittest discover -s tests -v
+
+  pr-title:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Conventional title with the skills as scope
+        # The title is passed through the environment, never interpolated into
+        # the script, so a crafted title cannot run as shell.
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BASE_REF: origin/${{ github.base_ref }}
+        run: python3 scripts/check_commit_scope.py --title "$TITLE" --base "$BASE_REF"

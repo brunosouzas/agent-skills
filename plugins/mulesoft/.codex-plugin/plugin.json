@@ -1,0 +1,20 @@
+{
+  "name": "mulesoft",
+  "version": "1.0.0",
+  "description": "Mule 4 applications, DataWeave, MUnit and the Mule SDK: rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "MuleSoft",
+    "shortDescription": "Mule 4, DataWeave, MUnit, Mule SDK",
+    "longDescription": "Rules with stable IDs for Mule 4 applications, DataWeave scripts and libraries, MUnit suites and Mule SDK connectors, plus scripts for the checks that have one right answer.",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": ["Write Mule 4 flows", "Write and test DataWeave", "Write MUnit tests", "Build Mule SDK connectors"]
+  }
+}

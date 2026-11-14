@@ -1,0 +1,39 @@
+schema_version: "1.1"
+name: none-jq-transform
+description: "Routing: a request outside Mule must load none of the plugin's skills."
+tags: [routing, negative]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Com jq, como transformo esse JSON [{"id":1,"tags":["a","b"]}] numa lista de pares id/tag?
+graders:
+  - name: does-not-load-mulesoft
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?mulesoft"'
+    min: 0
+    max: 0
+    arm: both
+  - name: does-not-load-dataweave
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?dataweave"'
+    min: 0
+    max: 0
+    arm: both
+  - name: does-not-load-munit
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?munit"'
+    min: 0
+    max: 0
+    arm: both
+  - name: does-not-load-mule-sdk
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?mule-sdk"'
+    min: 0
+    max: 0
+    arm: both

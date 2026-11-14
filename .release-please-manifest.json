@@ -1,0 +1,7 @@
+{
+  "plugins/mulesoft/skills/mulesoft": "1.0.0",
+  "plugins/mulesoft/skills/dataweave": "1.0.0",
+  "plugins/mulesoft/skills/munit": "1.0.0",
+  "plugins/mulesoft/skills/mule-sdk": "1.0.0",
+  "plugins/mulesoft": "1.0.0"
+}
