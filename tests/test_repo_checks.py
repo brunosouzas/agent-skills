@@ -85,6 +85,28 @@ class RepositoryTest(unittest.TestCase):
             code = check_repo.main([])
         self.assertEqual(code, 0, out.getvalue())
 
+    def test_a_skill_missing_from_the_plugin_dependencies_fails(self):
+        # Without the dependency, a skill release would not raise the plugin's
+        # version (docs/releasing.md); check a copy of the tree with one removed.
+        import json
+        import shutil
+        with tempfile.TemporaryDirectory() as folder:
+            copy = Path(folder) / "repo"
+            shutil.copytree(check_repo.ROOT, copy, ignore=shutil.ignore_patterns(".git", "results", "__pycache__"))
+            record = copy / "plugins/mulesoft/package.json"
+            data = json.loads(record.read_text(encoding="utf-8"))
+            del data["dependencies"]["munit"]
+            record.write_text(json.dumps(data), encoding="utf-8")
+            root, check_repo.ROOT = check_repo.ROOT, copy
+            out = io.StringIO()
+            try:
+                with redirect_stdout(out):
+                    code = check_repo.main([])
+            finally:
+                check_repo.ROOT = root
+        self.assertEqual(code, 1)
+        self.assertIn("dependencies must list the skill 'munit'", out.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

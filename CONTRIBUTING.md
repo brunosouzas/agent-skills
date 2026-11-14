@@ -20,7 +20,8 @@ plugins/<plugin>/skills/<skill>/
 ├── SKILL.md        frontmatter + when + how to work + where the rules are
 ├── rules.md        the rules (or references/<subject>.md when it grows)
 ├── scripts/        checks with one right answer
-└── CHANGELOG.md    written by release-please
+├── CHANGELOG.md    written by release-please
+└── package.json    version record for release-please (private, never published)
 ```
 
 Frontmatter (the [Agent Skills](https://agentskills.io/specification) format; `metadata` values are strings):

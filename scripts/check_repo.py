@@ -15,7 +15,10 @@ What it does
     - rule IDs: unique across the repository, and with --base, every ID that
       exists on the base still exists (a rule is retired, never deleted);
     - versions: release-please has one package per skill and per plugin, and
-      SKILL.md, the Codex plugin.json and the manifest agree;
+      SKILL.md, the Codex plugin.json, each package.json and the manifest
+      agree; a plugin's package.json depends on every one of its skills, so
+      the node-workspace plugin raises the plugin's version with any skill's
+      (docs/releasing.md);
     - evals: every skill has a case that must load it and one that must not;
     - links: every relative Markdown link points at a file that exists.
 
@@ -271,10 +274,41 @@ def check_release_config(report):
         needed = ".codex-plugin/plugin.json" if path.count("/") == 1 else "SKILL.md"
         if needed not in files:
             report.add("release-please-config.json", f"{path} must list {needed} in extra-files")
+    # The plugin's version follows its skills only through node-workspace.
+    if not any(p.get("type") == "node-workspace" for p in config.get("plugins", [])):
+        report.add("release-please-config.json", "plugins must include node-workspace (docs/releasing.md)")
+    for path, package in packages.items():
+        if package.get("release-type") != "node":
+            report.add("release-please-config.json", f"{path} must have release-type node (node-workspace reads only those)")
     components = [p.get("component") for p in packages.values()]
     for component in {c for c in components if components.count(c) > 1}:
         report.add("release-please-config.json", f"component '{component}' is used twice (tags would collide)")
     return manifest
+
+
+def check_version_records(report, versions):
+    # Each package has a private package.json: name = component, version = manifest.
+    config = read_json(ROOT / "release-please-config.json", report) or {}
+    for path, package in config.get("packages", {}).items():
+        record = read_json(ROOT / path / "package.json", report) if (ROOT / path / "package.json").is_file() else None
+        if record is None:
+            report.add(path, "no package.json (the version record release-please updates)")
+            continue
+        if record.get("name") != package.get("component"):
+            report.add(f"{path}/package.json", f"name must be the component '{package.get('component')}'")
+        if record.get("version") != versions.get(path):
+            report.add(f"{path}/package.json", f"version {record.get('version')} differs from the manifest's {versions.get(path)}")
+        if record.get("private") is not True:
+            report.add(f"{path}/package.json", "must be private: it is not an npm package")
+    # A plugin depends on exactly its skills, so any skill release bumps it.
+    for plugin in plugin_dirs():
+        record = read_json(plugin / "package.json", report) if (plugin / "package.json").is_file() else {}
+        skills = {s.name for s in (plugin / "skills").iterdir() if (s / "SKILL.md").is_file()}
+        dependencies = set((record or {}).get("dependencies", {}))
+        for skill in sorted(skills - dependencies):
+            report.add(f"{rel(plugin)}/package.json", f"dependencies must list the skill '{skill}'")
+        for name in sorted(dependencies - skills):
+            report.add(f"{rel(plugin)}/package.json", f"dependency '{name}' is not a skill of this plugin")
 
 
 def rule_ids(text):
@@ -347,6 +381,7 @@ def main(argv=None):
     report = Report()
     versions = check_release_config(report)
     check_marketplaces(report)
+    check_version_records(report, versions)
     names, aliases = {}, {}
     for plugin in plugin_dirs():
         check_plugin(plugin, report, versions)
