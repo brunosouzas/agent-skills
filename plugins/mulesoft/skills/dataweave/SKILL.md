@@ -14,7 +14,7 @@ What is particular to DataWeave 2 work, inside a Mule application or on its own.
 ## When
 
 - Use for transforms, `.dwl` scripts and modules, DataWeave libraries and their tests, and a snippet asked about out of context.
-- Not for the flow, its connectors or its MUnit structure (`mulesoft` and `munit`, if installed). Not for the API contract.
+- Not for the flow, its connectors or its MUnit structure (`mulesoft` and `munit`, if installed). Not for the API contract (`api-spec`, if installed).
 
 ## How to work
 
