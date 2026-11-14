@@ -37,7 +37,7 @@
   "packages": {
     "plugins/mulesoft/skills/mulesoft": {
       "component": "mulesoft",
-      "release-type": "simple",
+      "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -48,7 +48,7 @@
     },
     "plugins/mulesoft/skills/dataweave": {
       "component": "dataweave",
-      "release-type": "simple",
+      "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -59,7 +59,7 @@
     },
     "plugins/mulesoft/skills/munit": {
       "component": "munit",
-      "release-type": "simple",
+      "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -70,7 +70,7 @@
     },
     "plugins/mulesoft/skills/mule-sdk": {
       "component": "mule-sdk",
-      "release-type": "simple",
+      "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -81,7 +81,7 @@
     },
     "plugins/mulesoft": {
       "component": "mulesoft-plugin",
-      "release-type": "simple",
+      "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -91,5 +91,11 @@
         }
       ]
     }
-  }
+  },
+  "plugins": [
+    {
+      "type": "node-workspace",
+      "merge": true
+    }
+  ]
 }
