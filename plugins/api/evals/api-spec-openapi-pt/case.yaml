@@ -1,0 +1,15 @@
+schema_version: "1.1"
+name: api-spec-openapi-pt
+description: "Routing: must load api-spec."
+tags: [routing, api-spec]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Preciso revisar o openapi.yaml desta API: os erros 400 e 409 estão sem exemplo e o POST /orders devolve 200 em vez de 201. Pode corrigir o contrato?
+graders:
+  - name: loads-api-spec
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?api-spec"'

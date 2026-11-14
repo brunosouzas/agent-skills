@@ -1,0 +1,29 @@
+schema_version: "1.1"
+name: shell-git-hook-pt
+description: "Routing: must load shell and none of python, java."
+tags: [routing, shell]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Escreve um pre-commit hook em bash que rode shellcheck só nos arquivos .sh que mudaram no commit e falhe se algum tiver erro. Tem que funcionar também no bash 3.2.
+graders:
+  - name: loads-shell
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?shell"'
+  - name: does-not-load-python
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?python"'
+    min: 0
+    max: 0
+    arm: both
+  - name: does-not-load-java
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?java"'
+    min: 0
+    max: 0
+    arm: both

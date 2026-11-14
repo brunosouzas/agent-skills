@@ -1,0 +1,21 @@
+{
+  "name": "languages",
+  "displayName": "Languages",
+  "description": "Java, Python and shell: build and environment, code, tests and portability rules with stable IDs, and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "java",
+    "junit",
+    "maven",
+    "gradle",
+    "python",
+    "pytest",
+    "shell",
+    "bash"
+  ]
+}

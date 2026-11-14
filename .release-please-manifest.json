@@ -3,5 +3,18 @@
   "plugins/mulesoft/skills/dataweave": "1.0.0",
   "plugins/mulesoft/skills/munit": "1.0.0",
   "plugins/mulesoft/skills/mule-sdk": "1.0.0",
-  "plugins/mulesoft": "1.0.0"
+  "plugins/mulesoft": "1.0.0",
+  "plugins/api/skills/api-spec": "1.0.0",
+  "plugins/api": "1.0.0",
+  "plugins/languages/skills/java": "1.0.0",
+  "plugins/languages/skills/python": "1.0.0",
+  "plugins/languages/skills/shell": "1.0.0",
+  "plugins/languages": "1.0.0",
+  "plugins/devops/skills/azure-devops": "1.0.0",
+  "plugins/devops/skills/github-actions": "1.0.0",
+  "plugins/devops/skills/jenkins": "1.0.0",
+  "plugins/devops": "1.0.0",
+  "plugins/web/skills/astro": "1.0.0",
+  "plugins/web/skills/cloudflare": "1.0.0",
+  "plugins/web": "1.0.0"
 }

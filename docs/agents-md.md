@@ -21,4 +21,18 @@ An agent loads the skill whose `name` or one of whose `metadata.aliases` matches
 | MUnit, MUnit 3, MUnit Tools | `munit` |
 | Mule SDK, Mule extension, Mule connector, mule-plugin, dw-library | `mule-sdk` |
 
+The other plugins:
+
+| Name on the line | Skill |
+|---|---|
+| RAML, OpenAPI, OAS, Swagger | `api-spec` |
+| Java, JDK, JUnit, Gradle, Maven, Spring Boot | `java` |
+| Python, Python 3, pytest | `python` |
+| Shell, Bash, sh, zsh, POSIX sh | `shell` |
+| Azure DevOps, Azure Pipelines, ADO | `azure-devops` |
+| GitHub Actions, GitHub workflows, GHA | `github-actions` |
+| Jenkins, Jenkinsfile, Groovy | `jenkins` |
+| Astro | `astro` |
+| Cloudflare, Cloudflare Workers, Cloudflare Pages, Wrangler | `cloudflare` |
+
 Without a `Stack:` line, each skill's `description` still routes the request by what the files look like (a `pom.xml` with `mule-application` packaging, a `.dwl` file).

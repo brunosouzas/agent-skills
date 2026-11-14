@@ -7,6 +7,10 @@ Specialty skills for AI coding agents, in the open [Agent Skills](https://agents
 | Plugin | Skills | For |
 |---|---|---|
 | [mulesoft](plugins/mulesoft/README.md) | `mulesoft`, `dataweave`, `munit`, `mule-sdk` | Mule 4 applications, DataWeave, MUnit, Mule SDK connectors and shared assets |
+| [api](plugins/api/README.md) | `api-spec` | REST API specifications in RAML and OpenAPI |
+| [languages](plugins/languages/README.md) | `java`, `python`, `shell` | Standalone Java, Python, and Bash or sh scripts |
+| [devops](plugins/devops/README.md) | `azure-devops`, `github-actions`, `jenkins` | CI/CD pipelines in Azure Pipelines, GitHub Actions and Jenkins |
+| [web](plugins/web/README.md) | `astro`, `cloudflare` | Astro static sites, Cloudflare Workers and Pages |
 
 ## Install
 
@@ -14,7 +18,7 @@ Claude Code:
 
 ```bash
 claude plugin marketplace add brunosouzas/agent-skills
-claude plugin install mulesoft@brunosouzas-agent-skills
+claude plugin install mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web
 ```
 
 From a local clone, pass its path to `claude plugin marketplace add` instead.
@@ -23,7 +27,7 @@ Codex (skills only):
 
 ```bash
 codex plugin marketplace add brunosouzas/agent-skills
-codex plugin add mulesoft@brunosouzas-agent-skills
+codex plugin add mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web
 ```
 
 Other tools that read Agent Skills: copy or link `plugins/<plugin>/skills/<skill>/` into the tool's skills folder.
