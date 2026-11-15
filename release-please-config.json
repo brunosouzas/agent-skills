@@ -237,6 +237,51 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/delivery/skills/change-flow": {
+      "component": "change-flow",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "SKILL.md"
+        }
+      ]
+    },
+    "plugins/delivery/skills/merge-gates": {
+      "component": "merge-gates",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "SKILL.md"
+        }
+      ]
+    },
+    "plugins/delivery/skills/delivery-models": {
+      "component": "delivery-models",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "SKILL.md"
+        }
+      ]
+    },
+    "plugins/delivery": {
+      "component": "delivery-plugin",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "plugins": [

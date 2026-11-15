@@ -1,6 +1,6 @@
 # agent-skills
 
-Specialty skills for AI coding agents, in the open [Agent Skills](https://agentskills.io) format, packaged as plugins for **Claude Code** and **Codex**. A specialty skill knows one technology: its rules (each with a stable ID, a reason and a check), the scripts that check what has one right answer, and when it applies. It does not tell you how your team works; bring your own process.
+Specialty skills for AI coding agents, in the open [Agent Skills](https://agentskills.io) format, packaged as plugins for **Claude Code** and **Codex**. A specialty skill knows one technology: its rules (each with a stable ID, a reason and a check), the scripts that check what has one right answer, and when it applies. A specialty does not tell you how your team works. The separate `delivery` plugin is an optional process (change flow, merge gates, delivery models) that reads your repository's `AGENTS.md`; use it, or bring your own.
 
 ## Plugins
 
@@ -11,6 +11,7 @@ Specialty skills for AI coding agents, in the open [Agent Skills](https://agents
 | [languages](plugins/languages/README.md) | `java`, `python`, `shell` | Standalone Java, Python, and Bash or sh scripts |
 | [devops](plugins/devops/README.md) | `azure-devops`, `github-actions`, `jenkins` | CI/CD pipelines in Azure Pipelines, GitHub Actions and Jenkins |
 | [web](plugins/web/README.md) | `astro`, `cloudflare` | Astro static sites, Cloudflare Workers and Pages |
+| [delivery](plugins/delivery/README.md) | `change-flow`, `merge-gates`, `delivery-models` | The process: plan, review, merge gates and delivery of a change (not a technology) |
 
 ## Install
 
@@ -18,7 +19,7 @@ Claude Code:
 
 ```bash
 claude plugin marketplace add brunosouzas/agent-skills
-claude plugin install mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web
+claude plugin install mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web, delivery
 ```
 
 From a local clone, pass its path to `claude plugin marketplace add` instead.
@@ -27,7 +28,7 @@ Codex (skills only):
 
 ```bash
 codex plugin marketplace add brunosouzas/agent-skills
-codex plugin add mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web
+codex plugin add mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web, delivery
 ```
 
 Other tools that read Agent Skills: copy or link `plugins/<plugin>/skills/<skill>/` into the tool's skills folder.

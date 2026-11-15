@@ -1,0 +1,24 @@
+{
+  "name": "delivery",
+  "version": "1.0.0",
+  "description": "A change flow for any code repository: entry and exit checklists, independent review, merge gates by risk and delivery models, driven by lines of the repository's AGENTS.md.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Delivery",
+    "shortDescription": "Change flow, merge gates and delivery models",
+    "longDescription": "A process for agents that change code: an entry checklist that becomes the session plan, one branch and one draft pull request, an independent review loop, merge gates by risk with an approver named in AGENTS.md, and delivery models from GitFlow to continuous delivery, each with its release, rollback and verification.",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Plan and track a change",
+      "Decide who merges",
+      "Deliver and verify a release"
+    ]
+  }
+}

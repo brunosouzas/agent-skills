@@ -1,0 +1,22 @@
+schema_version: "1.1"
+name: merge-gates-pt
+description: "Routing: must load merge-gates and none of delivery-models."
+tags: [routing, merge-gates]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    O PR 42 deste repositório está com os checks verdes e a revisão independente não deixou nenhum finding aberto. Ele mexe numa regra de branch protection. Posso mesclar sozinho ou precisa do aprovador?
+graders:
+  - name: loads-merge-gates
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?merge-gates"'
+  - name: does-not-load-delivery-models
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?delivery-models"'
+    min: 0
+    max: 0
+    arm: both

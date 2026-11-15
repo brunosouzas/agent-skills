@@ -4,7 +4,7 @@
     "name": "Bruno Souza"
   },
   "metadata": {
-    "description": "Specialty skills for software engineering agents: one plugin per technology family."
+    "description": "Skills for software engineering agents: one plugin per technology family, and a delivery process that reads the repository's AGENTS.md."
   },
   "plugins": [
     {
@@ -31,6 +31,11 @@
       "name": "web",
       "source": "./plugins/web",
       "description": "Astro static sites and Cloudflare Workers and Pages: builds, webhooks, secrets, staging and production, as rules with stable IDs."
+    },
+    {
+      "name": "delivery",
+      "source": "./plugins/delivery",
+      "description": "A change flow for any code repository: entry and exit checklists, independent review, merge gates by risk and delivery models, driven by lines of the repository's AGENTS.md."
     }
   ]
 }

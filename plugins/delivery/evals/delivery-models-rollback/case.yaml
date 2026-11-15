@@ -1,0 +1,22 @@
+schema_version: "1.1"
+name: delivery-models-rollback
+description: "Routing: must load delivery-models and none of change-flow."
+tags: [routing, delivery-models]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Our Worker repository says Model: 3 continuous delivery with staging. The tag v2.4.0 just deployed to production and the smoke check right after it failed. What do we do now, and who has to approve it?
+graders:
+  - name: loads-delivery-models
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?delivery-models"'
+  - name: does-not-load-change-flow
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?change-flow"'
+    min: 0
+    max: 0
+    arm: both

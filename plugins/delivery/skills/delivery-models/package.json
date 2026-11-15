@@ -1,0 +1,7 @@
+{
+  "name": "delivery-models",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Version record of the delivery-models skill for release-please; not an npm package.",
+  "license": "Apache-2.0"
+}
