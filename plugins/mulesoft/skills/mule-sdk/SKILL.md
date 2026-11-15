@@ -1,6 +1,6 @@
 ---
 name: mule-sdk
-description: "Rules for shared Mule 4 assets that other applications depend on: connectors built with the Mule SDK (Java SDK), shared Mule plugins (mule-plugin packaging) and DataWeave libraries published to Exchange or a Maven repository. Covers the public contract of exported operations and functions, semantic versioning of the asset, and connection management in connectors. Use when writing, changing or reviewing such an asset; recognise it by a pom.xml with mule-extension, mule-plugin or dw-library packaging, or @Extension and @Operations classes. Triggers: Mule SDK, Mule extension, Mule connector, custom connector, shared Mule plugin, mule-plugin packaging, dw-library. Not for a Mule application or the Mule Maven Plugin's deployment configuration (mulesoft skill), the DataWeave code inside a library (dataweave skill) or a standalone Java library (no Mule packaging)."
+description: "Rules for shared Mule 4 assets that other applications depend on: connectors built with the Mule SDK (Java SDK), shared Mule plugins (mule-plugin packaging) and DataWeave libraries published to Exchange or a Maven repository. Covers the public contract of exported operations and functions, semantic versioning of the asset, and connection management in connectors. Use when writing, changing or reviewing such an asset; recognise it by a pom.xml with mule-extension, mule-plugin or dw-library packaging, or @Extension and @Operations classes. Triggers: Mule SDK, Mule extension, Mule connector, custom connector, shared Mule plugin, mule-plugin packaging, dw-library. Not for a Mule application or the Mule Maven Plugin's deployment configuration (mulesoft skill), the DataWeave code inside a library (dataweave skill) or a standalone Java library with no Mule packaging (java skill)."
 license: Apache-2.0
 metadata:
   version: "1.0.0" # x-release-please-version
@@ -14,7 +14,7 @@ What is particular to Mule 4 assets that applications depend on: connectors (Mul
 ## When
 
 - Use for a `pom.xml` with `<packaging>mule-extension</packaging>` (a connector), `mule-plugin` (a shared plugin of flows or configuration) or `dw-library` (a DataWeave library built with the `data-weave-maven-plugin`).
-- Not for a Mule application, and not for a plain Java library.
+- Not for a Mule application (`mulesoft`), and not for a plain Java library (`java`), if installed.
 
 ## How to work
 
