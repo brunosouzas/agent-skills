@@ -4,4 +4,4 @@
 
 ### Features
 
-* First public version, with the rules GATE-1 to GATE-10.
+* First public version, with the rules GATE-1 to GATE-11.

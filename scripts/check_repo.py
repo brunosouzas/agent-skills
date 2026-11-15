@@ -265,7 +265,7 @@ def check_specialties_name_no_process(report):
     names = sorted(s.name for s in process.iterdir() if (s / "SKILL.md").is_file()) if process.is_dir() else []
     if not names:
         return
-    pattern = re.compile(r"(?<![\w-])(?:" + "|".join(map(re.escape, names)) + r"|" + PROCESS_PLUGIN + r":[\w-]+)(?![\w-])")
+    pattern = re.compile(r"(?<![\w-])(?:" + "|".join(map(re.escape, names)) + r"|" + PROCESS_PLUGIN + r":[\w-]+)(?![\w-])", re.I)
     for plugin in plugin_dirs():
         if plugin.name == PROCESS_PLUGIN:
             continue

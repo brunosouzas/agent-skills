@@ -22,13 +22,13 @@ How to change this file: CONTRIBUTING.md. A rule keeps its ID for life; a rule t
 
 ## REL: releases, hotfixes and consumers
 
-- **REL-1** A release is always its own pull request at level 2. In models 2 and 3 it is the release pull request the release tool keeps open: the agent never edits it (the tool rewrites it on every merge); when asked for a release, say it is ready in one line with its link and what it carries.
+- **REL-1** A release is always its own pull request at level 2, merged by the approver themself (GATE-11). In models 2 and 3 it is the release pull request the release tool keeps open: the agent never edits it (the tool rewrites it on every merge); when asked for a release, say it is ready in one line with its link and what it carries.
   Why: the release pull request is generated; an edit is lost or, worse, released by hand.
-- **REL-2** In model 1, a `release/x.y.z` or `hotfix/x.y.z` pull request into `main` is walked like any change. A `release/` one carries no new code (`S2 Review: not needed: release`); a `hotfix/` one carries the fix, which gets the review.
+- **REL-2** In model 1, a `release/x.y.z` or `hotfix/x.y.z` pull request into `main` is walked like any change. A `release/` one carries no new code (`S2 Review: not needed: release`); a `hotfix/` one carries the fix, which gets the review. The approver merges either (GATE-11).
   Why: the hotfix is code nobody has reviewed yet; the release branch is code already reviewed.
 - **REL-3** In model 1, a hotfix is `hotfix/x.y.z` from `main`. If `main`'s `pom.xml` does not already carry `x.y.z-SNAPSHOT`, its first commit sets it with `mvn versions:set -DnewVersion=x.y.z-SNAPSHOT -DgenerateBackupPoms=false`, the one version change made outside the pipeline.
   Why: `release:prepare` releases the version in the POM, and the hotfix needs its own.
-- **REL-4** In model 1, after a release, merge the back-merge pull request `main → develop` (merge commit) when it has no conflicts; with conflicts (usually the version), resolve them on a `chore/back-merge-x.y.z` branch cut from `main`, never squashed, keeping `develop`'s `-SNAPSHOT`.
+- **REL-4** In model 1, after a release, merge the back-merge pull request `main → develop` (merge commit; level 1) when it has no conflicts; with conflicts (usually the version), resolve them on a `chore/back-merge-x.y.z` branch cut from `main`, never squashed, keeping `develop`'s `-SNAPSHOT` (level 2 when it changes the version: GATE-11).
   Why: a squashed back-merge loses the merge, and `main` and `develop` drift apart again.
 - **REL-5** An urgent fix in model 2 or 3 is a `bugfix/` into `main`, then the release pull request. When `main` already holds other unreleased changes, ask the approver whether they go out together or whether to cut `release/x.y` from the last tag and cherry-pick the fix once it is on `main` (upstream first).
   Why: an urgent fix should not ship changes nobody chose to release yet.

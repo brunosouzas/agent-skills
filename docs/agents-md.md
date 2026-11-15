@@ -47,7 +47,7 @@ The skills of the `delivery` plugin read these lines. A missing line is filled i
 Stack: Python, GitHub Actions
 Spec: OpenSpec
 Delivery: D local
-Model: 2 release PR
+Model: 4 install locally
 Integration branch: `main`
 Data: `feeds.yaml`
 Tracker: GitHub Issues acme/tool
@@ -57,13 +57,13 @@ Approver: @acme/maintainers
 
 | Line | Values | Read by | Gate line |
 |---|---|---|---|
-| `Spec:` | the spec tool (`OpenSpec`), or `none` (every change takes the small path) | `change-flow` (SIZE, SPEC) | no |
+| `Spec:` | the spec tool (`OpenSpec`), or `none` (every change takes the small path) | `change-flow` (SIZE, SPEC), `merge-gates` | yes |
 | `Delivery:` | `A live`, `B package`, `C environments`, `D local`, `E reference`: where a merged change goes while the repository has no `Model:` line | `delivery-models`, `merge-gates` | yes |
 | `Model:` | `1 GitFlow release`, `2 release PR`, `3 continuous delivery with staging`, `4 install locally`, `reference`; another value is read from the repository's delivery documentation | `delivery-models`, `merge-gates` | yes |
 | `Integration branch:` | the branch changes start from and merge into (`develop` in model 1, otherwise `main`) | `change-flow` (CHG-1), `merge-gates` | yes |
 | `Data:` | paths that are data lists, changed without an independent review (never skills, prompts or configuration), or `none` | `change-flow` (REV-4), `merge-gates` | yes |
 | `Tracker:` | `Azure Boards <organisation>/<project>, area <area>`, `GitHub Issues <owner>/<repository>`, `Jira <site>, project <KEY>`, or `none` | `change-flow` (TRK) | no |
-| `Approver:` | the person or team who approves level 2 actions, as the forge names them (`@login`, `@org/team`) | `merge-gates` (GATE-1) | yes |
+| `Approver:` | the person or team who approves level 2 actions, as the forge names them (`login` or `@login`, `@org/team`) | `merge-gates` (GATE-1) | yes |
 | `Deliver and verify:` | what runs after a merge and the check that it worked | `delivery-models`, `change-flow` (S6) | no |
 
 A gate line decides which merge gate applies, so changing it is always a level 2 change (merge-gates GATE-3). The checks (`Build:`, `Test:`) are the commands the repository lists; `change-flow` runs them in S1.

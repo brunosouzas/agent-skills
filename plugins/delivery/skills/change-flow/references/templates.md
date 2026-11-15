@@ -24,7 +24,7 @@ E8 Questions: <asked in ASK> | none
 What changed: <behaviour, plain words>
 Spec: <change name, scenarios covered> | no spec: <why>
 S1 Checks: <command -> result>; not run: <which, why>
-S2 Review: <rounds, fixed, rejected and why> | not done: <why> | not needed: <version bump | back-merge | data list | prose typo>
+S2 Review: <rounds, fixed, rejected and why> | not done: <why> | not needed: <release | version bump | back-merge | data list | prose typo>
 S3 Docs: <files> | none: <why>
 S4 Preview: <URL, screenshots or stills> | n/a: <why>
 S5 Merge: level <0-2> | delegation: "<the user's words>" | approver
@@ -45,4 +45,14 @@ S9 Cleanup: <branches and worktrees removed>
 S10 Process: <what the flow missed or got wrong> | none
 ```
 
-The session that merges posts it at once. A pull request merged after its session ended is picked up at the next session's IN: list the merged pull requests of this flow (description starting with `Plan`) with no "After merge" comment, and finish one or two before new work; with more, list them and ask.
+The session that merges posts it at once.
+
+## Picking up merged work (the start of IN)
+
+Work merged after its session ended is picked up by the next session, before new work. List:
+
+1. the merged pull requests of this flow (description starting with `Plan`) with no "After merge" comment;
+2. the release pull requests merged in the last week (a `release-please--` head branch, whoever opened it) with no "After merge" comment: verify their production as REL-6 says;
+3. the merged release pull requests whose "After merge" comment says `production pending approval`: once the run is approved and production checks out, comment `Production verified: <check -> result>`.
+
+Finish one or two; with more, list them for the user and ask before going on, so a new request is not buried under old work. An after-merge routine the user's instructions name may own the recent ones.

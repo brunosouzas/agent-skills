@@ -125,13 +125,21 @@ class RepositoryTest(unittest.TestCase):
 
     def test_a_specialty_naming_a_process_skill_fails(self):
         # A specialty must work without the delivery plugin (CONTRIBUTING.md, Process skills).
-        for text in ("Follow merge-gates before merging.", "Load delivery:change-flow first."):
+        for text in ("Follow merge-gates before merging.", "Load delivery:change-flow first.", "Merge-gates decides."):
             def change(copy, text=text):
                 rules = copy / DW
                 rules.write_text(rules.read_text(encoding="utf-8") + "\n" + text + "\n", encoding="utf-8")
             code, out = self.run_on_copy(change)
             self.assertEqual(code, 1, text)
             self.assertIn("names the process skill", out)
+
+    def test_near_misses_are_not_process_skills(self):
+        # Plain words and AGENTS.md lines are not skill names.
+        def change(copy):
+            rules = copy / DW
+            rules.write_text(rules.read_text(encoding="utf-8") + "\nRead the merge gates and the Delivery: line; pre-merge-gates hooks run.\n", encoding="utf-8")
+        code, out = self.run_on_copy(change)
+        self.assertEqual(code, 0, out)
 
     def test_a_process_skill_may_name_its_siblings(self):
         # Inside the delivery plugin the skills route to each other; that is not a finding.

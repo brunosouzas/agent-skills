@@ -4,7 +4,7 @@ How to change this file: CONTRIBUTING.md. A rule keeps its ID for life; a rule t
 
 ## CHG: branches and pull requests
 
-- **CHG-1** One change, one branch, one pull request; nothing is committed straight on a long branch. Branch from the up-to-date integration branch (`Integration branch:`, else `main`) with `git switch -c <branch> origin/<base> --no-track`.
+- **CHG-1** One change, one branch, one pull request; nothing is committed straight on a long branch. Branch from the up-to-date integration branch (`Integration branch:`, else `develop` in model 1, otherwise `main`) with `git switch -c <branch> origin/<base> --no-track`.
   Why: without an upstream a bare `git push` cannot land on the base by mistake.
   Check: `git rev-parse --abbrev-ref @{upstream}` fails before the first push.
 - **CHG-2** Name the branch by intent: `feature/<card>-<slug>` for new or changed behaviour, `bugfix/<card>-<slug>` for a correction, `chore/<card>-<slug>` for maintenance with no behaviour change; drop `<card>-` without a card. A delivery model may add its own long-branch names (`delivery-models`).
@@ -24,14 +24,14 @@ How to change this file: CONTRIBUTING.md. A rule keeps its ID for life; a rule t
 
 ## REV: the independent review
 
-- **REV-1** Review with a clean context: a separate reviewer (the `reviewer` agent, if installed, or a new session) given only the base ref, the branch, the spec change if any, the lens and the repository's `AGENTS.md`; never the author's reasoning. Spec review asks whether an implementer with no other context could build exactly the intended behaviour from the artifacts alone.
+- **REV-1** Review with a clean context: a separate reviewer (the `reviewer` agent, if installed, or a new session) given only the base ref, the branch, the spec change if any, the lens and the repository's `AGENTS.md`, and for a spec review also the request in the user's words with their answers from ASK, the current specs and the spec tool's configuration; never the author's reasoning. Spec review asks whether an implementer with no other context could build exactly the intended behaviour from the artifacts alone.
   Why: a reviewer who knows what the author meant reads that instead of what is on disk.
   Check: the pull request names the reviewer and the reviewed commit; a review in the same context is reported as "independent review not done".
 - **REV-2** Fix every right `high` and `medium` finding. A rejected finding gets one line in the pull request saying why; a finding that needs the approver goes to the description's Questions.
   Why: a finding dropped without a line cannot be told apart from one never read.
 - **REV-3** At most two review rounds, each with a new reviewer; a second round only when the first had a `high` or `medium` finding. A finding still open after the second stays open: the pull request stays a draft and the user is told (CHG-8).
   Why: a third round means the contract is unclear, and more rounds will not make it clear.
-- **REV-4** Skills, agents, prompts, pipelines and `AGENTS.md` are code and always get the review. The only exemptions: a version bump, a back-merge, a path on the `Data:` line, a typo in prose no tool reads.
+- **REV-4** Skills, agents, prompts, pipelines and `AGENTS.md` are code and always get the review. The only exemptions: a version bump, a back-merge, a model 1 `release/` branch (it carries no new code), a path on the `Data:` line, a typo in prose no tool reads.
   Why: an instruction file changes what every later agent does.
 - **REV-5** Code and spec never disagree: when implementing shows the spec gives a worse result, change the spec text and its scenario in the same commit as the code.
   Why: the spec is the next change's acceptance criteria; a stale one misleads it.
