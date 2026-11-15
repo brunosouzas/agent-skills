@@ -10,7 +10,8 @@ What it does
       metadata.version on a line marked x-release-please-version,
       metadata.aliases), size (SKILL.md ~100 lines, a rules file over ~150
       lines must be split into references/), a CHANGELOG.md, no personal or
-      process facts (writing rules 1 and 5);
+      process facts (writing rules 1 and 5); a specialty names no skill of
+      the process plugin (CONTRIBUTING.md, Process skills);
     - names: skill names and aliases are unique across the repository;
     - rule IDs: unique across the repository, and with --base, every ID that
       exists on the base still exists (a rule is retired, never deleted);
@@ -70,6 +71,11 @@ PERSONAL_FACTS = [
     (re.compile(r"\bmulesoft-delivery\b|\bMDEL-\d|\bBRU-[A-Z]+-\d"), "a personal process skill or profile"),
     (re.compile(r"\bbruno\b|\bbrunosouzas\b", re.I), "a person"),
 ]
+
+
+# The one plugin that is a process (CONTRIBUTING.md, Process skills). A
+# specialty never names its skills, so it works without the plugin installed.
+PROCESS_PLUGIN = "delivery"
 
 
 class Report:
@@ -253,6 +259,24 @@ def check_skill(skill, report, versions, names, aliases):
                 report.add(rel(path), f"names {what} ('{match.group(0)}'); keep it out of a public skill")
 
 
+def check_specialties_name_no_process(report):
+    # Writing rule 1: a specialty cites no process, and the delivery plugin is one.
+    process = ROOT / "plugins" / PROCESS_PLUGIN / "skills"
+    names = sorted(s.name for s in process.iterdir() if (s / "SKILL.md").is_file()) if process.is_dir() else []
+    if not names:
+        return
+    pattern = re.compile(r"(?<![\w-])(?:" + "|".join(map(re.escape, names)) + r"|" + PROCESS_PLUGIN + r":[\w-]+)(?![\w-])")
+    for plugin in plugin_dirs():
+        if plugin.name == PROCESS_PLUGIN:
+            continue
+        for path in sorted(plugin.glob("skills/*/**/*.md")):
+            if path.name == "CHANGELOG.md":
+                continue
+            match = pattern.search(path.read_text(encoding="utf-8"))
+            if match:
+                report.add(rel(path), f"names the process skill '{match.group(0)}'; a specialty says \"the repository's delivery documentation\" (CONTRIBUTING.md, Process skills)")
+
+
 def check_release_config(report):
     """Check release-please's config and manifest; return the manifest."""
     config = read_json(ROOT / "release-please-config.json", report) or {}
@@ -395,6 +419,7 @@ def main(argv=None):
     for alias, owner in aliases.items():
         if alias in names and alias != owner:
             report.add("aliases", f"alias '{alias}' of '{owner}' is the name of another skill")
+    check_specialties_name_no_process(report)
     check_rule_ids(report, args.base)
     check_evals(report)
     check_links(report)

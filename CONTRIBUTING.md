@@ -1,10 +1,10 @@
 # Contributing
 
-This repository is a marketplace of plugins; each plugin holds specialty skills for one technology family (`mulesoft`, `api`, `languages`, `devops`, `web`). A specialty skill says what is particular to a technology: its rules, how to check them, and when to use it. It never says how a team works: processes, reviews and delivery belong to whoever installs the skills.
+This repository is a marketplace of plugins. Most hold specialty skills for one technology family (`mulesoft`, `api`, `languages`, `devops`, `web`): a specialty skill says what is particular to a technology, its rules, how to check them, and when to use it. It never says how a team works. One plugin, `delivery`, is a process instead ([Process skills](#process-skills)); it is optional, and no specialty depends on it.
 
 ## Writing rules
 
-1. **No process, no person.** A specialty never cites a process (a playbook, a team's workflow) or a person. It may cite another skill, always as "if it is installed": the reader may have installed only this one.
+1. **No process, no person.** A specialty never cites a process (a playbook, a team's workflow, a skill of the `delivery` plugin) or a person. It may cite another skill, always as "if it is installed": the reader may have installed only this one.
 2. **The `description` routes the request.** It says what the skill does, when to use it (`Use when ...`), the words that trigger it (`Triggers: ...`) and when not to use it (`Not for ...`, naming the skill that covers that case). It is the only text a tool reads before deciding to load the skill, so it is written for that decision, at most 1024 characters.
 3. **Short files.** `SKILL.md` has about 100 lines at most: when to use the skill, how to work in a few steps, and where the rules are. A `rules.md` over about 150 lines is split into `references/<subject>.md`, and `SKILL.md` says when to read each one.
 4. **What has a right answer becomes a script.** A check that a program can decide (a missing attribute, a forbidden default, a file layout) is a script in the skill's `scripts/`, with a test in `tests/`, and the rule's `Check:` line names it. Scripts use the Python standard library only and start with a header saying what they do, why, how to run them and what can go wrong.
@@ -12,6 +12,15 @@ This repository is a marketplace of plugins; each plugin holds specialty skills 
 6. **Rule IDs are stable.** A rule keeps its ID for life (`DW-4`), also when it moves to another skill of the repository. A rule that no longer applies is retired, not deleted: keep its ID and heading and replace its text with `(retired in <version>: <reason>)`. A number is never reused. CI refuses a pull request that removes an ID.
 7. **Every skill has evals.** Each skill has at least one routing case that must load it and one that must not (see [Evals](#evals)).
 8. **Every skill has a version.** `metadata.version` in the frontmatter, starting at `1.0.0`, on the line marked `# x-release-please-version`; release-please raises it (see [Versions](#versions)).
+
+## Process skills
+
+The `delivery` plugin follows every writing rule above except the first half of rule 1: it is a process. What it may not do is name whose process it is.
+
+- **It reads lines, it names nobody.** Who approves, where cards live and how a repository delivers come from lines of the repository's `AGENTS.md` (`Approver:`, `Tracker:`, `Model:`, ...; [docs/agents-md.md](docs/agents-md.md)), then from the user's own instructions, then the strictest reading. Never a person, a board, a vault, an account or a machine (rule 5 and `scripts/check_repo.py` apply as to any skill).
+- **A new line is documented first.** A process skill that reads a new `AGENTS.md` line adds it to docs/agents-md.md in the same pull request.
+- **A personal process builds on it.** A team's own process (more models, risk classes, notes after a merge) loads these skills and adds to them in its own instructions; it does not fork them.
+- **Specialties stay independent.** CI refuses a specialty that names a skill of the `delivery` plugin; a specialty says "the repository's delivery documentation" instead.
 
 ## A skill's files
 

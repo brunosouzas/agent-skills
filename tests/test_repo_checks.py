@@ -107,6 +107,49 @@ class RepositoryTest(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("dependencies must list the skill 'munit'", out.getvalue())
 
+    def run_on_copy(self, change):
+        """Run check_repo on a copy of the tree after change(copy); return (code, output)."""
+        import shutil
+        with tempfile.TemporaryDirectory() as folder:
+            copy = Path(folder) / "repo"
+            shutil.copytree(check_repo.ROOT, copy, ignore=shutil.ignore_patterns(".git", "results", "__pycache__"))
+            change(copy)
+            root, check_repo.ROOT = check_repo.ROOT, copy
+            out = io.StringIO()
+            try:
+                with redirect_stdout(out):
+                    code = check_repo.main([])
+            finally:
+                check_repo.ROOT = root
+        return code, out.getvalue()
+
+    def test_a_specialty_naming_a_process_skill_fails(self):
+        # A specialty must work without the delivery plugin (CONTRIBUTING.md, Process skills).
+        for text in ("Follow merge-gates before merging.", "Load delivery:change-flow first."):
+            def change(copy, text=text):
+                rules = copy / DW
+                rules.write_text(rules.read_text(encoding="utf-8") + "\n" + text + "\n", encoding="utf-8")
+            code, out = self.run_on_copy(change)
+            self.assertEqual(code, 1, text)
+            self.assertIn("names the process skill", out)
+
+    def test_a_process_skill_may_name_its_siblings(self):
+        # Inside the delivery plugin the skills route to each other; that is not a finding.
+        def change(copy):
+            skill = copy / "plugins/delivery/skills/change-flow/SKILL.md"
+            skill.write_text(skill.read_text(encoding="utf-8") + "\nSee merge-gates.\n", encoding="utf-8")
+        code, out = self.run_on_copy(change)
+        self.assertEqual(code, 0, out)
+
+    def test_a_process_skill_naming_a_person_fails(self):
+        # Process skills read lines; they name nobody (CONTRIBUTING.md, Process skills).
+        def change(copy):
+            rules = copy / "plugins/delivery/skills/merge-gates/rules.md"
+            rules.write_text(rules.read_text(encoding="utf-8") + "\nBruno approves.\n", encoding="utf-8")
+        code, out = self.run_on_copy(change)
+        self.assertEqual(code, 1)
+        self.assertIn("a person", out)
+
 
 if __name__ == "__main__":
     unittest.main()

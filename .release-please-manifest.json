@@ -16,5 +16,9 @@
   "plugins/devops": "1.0.0",
   "plugins/web/skills/astro": "1.0.0",
   "plugins/web/skills/cloudflare": "1.0.0",
-  "plugins/web": "1.0.0"
+  "plugins/web": "1.0.0",
+  "plugins/delivery/skills/change-flow": "1.0.0",
+  "plugins/delivery/skills/merge-gates": "1.0.0",
+  "plugins/delivery/skills/delivery-models": "1.0.0",
+  "plugins/delivery": "1.0.0"
 }
