@@ -1,6 +1,6 @@
 {
   "name": "dataweave",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Version record of the dataweave skill for release-please; not an npm package.",
   "license": "Apache-2.0"

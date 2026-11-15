@@ -3,7 +3,7 @@ name: mulesoft
 description: "Rules and checks for Mule 4 applications: flows, layout, configuration and properties, error handling, logging, Anypoint and CloudHub 2.0 deployment config, API Manager policies and the Maven build. Use when writing, changing or reviewing a Mule 4 application, a flow XML file under src/main/mule/, its global configuration or its properties; recognise it by a pom.xml with mule-application packaging or a mule-artifact.json. Triggers: Mule, Mule 4, MuleSoft, Mule flow, APIkit, Anypoint, CloudHub. Not for DataWeave scripts on their own (dataweave skill), MUnit tests (munit skill), Mule SDK connectors, shared plugins or DataWeave libraries as assets (mule-sdk skill), the RAML or OpenAPI spec (api-spec skill), or the CI/CD pipeline (azure-devops, github-actions or jenkins skill)."
 license: Apache-2.0
 metadata:
-  version: "1.0.0" # x-release-please-version
+  version: "1.0.1" # x-release-please-version
   aliases: "mule, mule 4, anypoint, apikit, cloudhub"
 ---
 
