@@ -6,7 +6,7 @@ What it does
     Conventional Commit (`type(scope)!: subject`). When a changed file is inside
     a skill (plugins/<plugin>/skills/<skill>/...), the scope must name that
     skill; several skills are separated by commas: `fix(dataweave,munit): ...`.
-    The release pull request of release-please (`chore(main): release ...`) is
+    The release pull request of release-please (`chore: release main`) is
     exempt: it touches every released skill by design.
 
 Why it exists
@@ -36,7 +36,9 @@ import sys
 TYPES = "feat|fix|perf|revert|docs|refactor|test|chore|ci|build|style"
 TITLE_RE = re.compile(rf"^(?P<type>{TYPES})(\((?P<scope>[^)]+)\))?(?P<breaking>!)?: \S")
 SKILL_PATH_RE = re.compile(r"^plugins/[^/]+/skills/(?P<skill>[^/]+)/")
-RELEASE_TITLE_RE = re.compile(r"^chore\(main\): release( main)?\b")
+# release-please's titles: "chore: release main" for the one manifest pull request
+# of this repository, "chore(main): release <component> <version>" for a single package.
+RELEASE_TITLE_RE = re.compile(r"^chore(\(main\))?: release main$|^chore\(main\): release [\w.-]+ \d+\.\d+\.\d+$")
 
 
 def problems(title, files):
