@@ -1,4 +1,4 @@
-"""Tests for plugins/languages/skills/python/scripts/check-encoding.py.
+"""Tests for plugins/python/skills/python/scripts/check-encoding.py.
 
 What: each test writes a small Python file and checks what the script reports.
 Why: the script is the check of PY-4; a wrong report sends an agent after a
@@ -10,7 +10,7 @@ import unittest
 
 from skill_script import load, run
 
-check = load("plugins/languages/skills/python/scripts/check-encoding.py", "check_encoding")
+check = load("plugins/python/skills/python/scripts/check-encoding.py", "check_encoding")
 
 
 class CheckEncodingTest(unittest.TestCase):

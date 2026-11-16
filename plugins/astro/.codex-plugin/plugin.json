@@ -1,0 +1,22 @@
+{
+  "name": "astro",
+  "version": "1.0.0",
+  "description": "Astro static sites: clean builds and astro check, .astro markup pitfalls, content schema helpers, public URLs and redirects, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Astro",
+    "shortDescription": "Astro static sites",
+    "longDescription": "Rules with stable IDs for Astro static sites (clean installs and astro check, braces in .astro markup, content collections and theme helpers, public URLs, redirects, social-image caches).",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Build Astro sites"
+    ]
+  }
+}

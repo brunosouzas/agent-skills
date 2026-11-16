@@ -1,0 +1,17 @@
+{
+  "name": "azure-devops",
+  "displayName": "Azure DevOps",
+  "description": "Azure Pipelines YAML: templates and pinned refs, variable groups, environments and approvals, secrets and release triggers, as rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "azure-devops",
+    "azure-pipelines",
+    "ci",
+    "cd"
+  ]
+}

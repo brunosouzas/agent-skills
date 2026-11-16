@@ -1,0 +1,23 @@
+{
+  "name": "cloudflare",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers and Pages: wrangler config, routes, webhook signatures, secrets, staging and production deploys and rollbacks, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cloudflare",
+    "shortDescription": "Cloudflare Workers and Pages",
+    "longDescription": "Rules with stable IDs for Cloudflare Workers and Pages (wrangler config, one route table, webhook signatures and replay windows, secrets, Durable Object migrations, Workers Builds, staging and production deploys, rollbacks).",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Write Cloudflare Workers",
+      "Deploy to Cloudflare Pages"
+    ]
+  }
+}

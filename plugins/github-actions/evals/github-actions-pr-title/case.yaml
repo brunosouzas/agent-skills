@@ -1,0 +1,15 @@
+schema_version: "1.1"
+name: github-actions-pr-title
+description: "Routing: must load github-actions."
+tags: [routing, github-actions]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Write a GitHub Actions workflow in .github/workflows/pr-title.yml that fails a pull request whose title is not a Conventional Commit. Keep the token read-only.
+graders:
+  - name: loads-github-actions
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-actions"'

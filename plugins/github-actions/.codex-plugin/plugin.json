@@ -1,0 +1,22 @@
+{
+  "name": "github-actions",
+  "version": "1.0.0",
+  "description": "GitHub Actions workflows: pinned actions, least-privilege permissions, untrusted input, secrets and environments, as rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "GitHub Actions",
+    "shortDescription": "GitHub Actions",
+    "longDescription": "Rules with stable IDs for GitHub Actions (actions pinned by commit SHA, least-privilege permissions, untrusted input, pull_request_target, secrets, environments, release and deploy jobs), plus scripts for the checks that have one right answer.",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Write GitHub Actions workflows"
+    ]
+  }
+}

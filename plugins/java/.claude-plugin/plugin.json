@@ -1,0 +1,17 @@
+{
+  "name": "java",
+  "displayName": "Java",
+  "description": "Standalone Java: the build and JDK a project declares, dependencies, nulls, exceptions and JUnit tests, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "java",
+    "junit",
+    "maven",
+    "gradle"
+  ]
+}

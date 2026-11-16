@@ -1,0 +1,22 @@
+{
+  "name": "python",
+  "version": "1.0.0",
+  "description": "Python applications, CLIs and scripts with logic: locked dependencies, environments, safe paths, encodings and pytest tests, as rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Python",
+    "shortDescription": "Python",
+    "longDescription": "Rules with stable IDs for Python code (declared interpreter and locked dependencies, virtual environments, safe paths, file encodings, pytest or unittest tests), plus scripts for the checks that have one right answer.",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Write Python and pytest tests"
+    ]
+  }
+}

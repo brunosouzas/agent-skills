@@ -4,7 +4,7 @@
     "name": "Bruno Souza"
   },
   "metadata": {
-    "description": "Skills for software engineering agents: one plugin per technology family, and a delivery process that reads the repository's AGENTS.md."
+    "description": "Skills for software engineering agents: one plugin per technology, and a delivery process that reads the repository's AGENTS.md."
   },
   "plugins": [
     {
@@ -18,19 +18,44 @@
       "description": "REST API specifications in RAML and OpenAPI: resources, data types, errors, examples, versioning and security, as rules with stable IDs."
     },
     {
-      "name": "languages",
-      "source": "./plugins/languages",
-      "description": "Java, Python and shell: build and environment, code, tests and portability rules with stable IDs, and checks that run."
+      "name": "java",
+      "source": "./plugins/java",
+      "description": "Standalone Java: the build and JDK a project declares, dependencies, nulls, exceptions and JUnit tests, as rules with stable IDs."
     },
     {
-      "name": "devops",
-      "source": "./plugins/devops",
-      "description": "Azure Pipelines, GitHub Actions and Jenkins: templates, permissions, secrets, triggers and deploys, as rules with stable IDs and checks that run."
+      "name": "python",
+      "source": "./plugins/python",
+      "description": "Python applications, CLIs and scripts with logic: locked dependencies, environments, safe paths, encodings and pytest tests, as rules with stable IDs and checks that run."
     },
     {
-      "name": "web",
-      "source": "./plugins/web",
-      "description": "Astro static sites and Cloudflare Workers and Pages: builds, webhooks, secrets, staging and production, as rules with stable IDs."
+      "name": "shell",
+      "source": "./plugins/shell",
+      "description": "Bash and POSIX sh scripts, git hooks and pipeline steps: strict mode, quoting, guarded destructive commands and portability, as rules with stable IDs and checks that run."
+    },
+    {
+      "name": "azure-devops",
+      "source": "./plugins/azure-devops",
+      "description": "Azure Pipelines YAML: templates and pinned refs, variable groups, environments and approvals, secrets and release triggers, as rules with stable IDs and checks that run."
+    },
+    {
+      "name": "github-actions",
+      "source": "./plugins/github-actions",
+      "description": "GitHub Actions workflows: pinned actions, least-privilege permissions, untrusted input, secrets and environments, as rules with stable IDs and checks that run."
+    },
+    {
+      "name": "jenkins",
+      "source": "./plugins/jenkins",
+      "description": "Jenkinsfiles and Groovy shared libraries: declarative pipelines, failure handling, credentials and parameters in sh steps, as rules with stable IDs."
+    },
+    {
+      "name": "astro",
+      "source": "./plugins/astro",
+      "description": "Astro static sites: clean builds and astro check, .astro markup pitfalls, content schema helpers, public URLs and redirects, as rules with stable IDs."
+    },
+    {
+      "name": "cloudflare",
+      "source": "./plugins/cloudflare",
+      "description": "Cloudflare Workers and Pages: wrangler config, routes, webhook signatures, secrets, staging and production deploys and rollbacks, as rules with stable IDs."
     },
     {
       "name": "delivery",

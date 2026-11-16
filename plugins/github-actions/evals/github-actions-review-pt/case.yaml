@@ -1,0 +1,15 @@
+schema_version: "1.1"
+name: github-actions-review-pt
+description: "Routing: must load github-actions."
+tags: [routing, github-actions]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Revisa esse workflow do GitHub Actions: ele usa pull_request_target, actions/checkout@v4 e coloca ${{ github.event.pull_request.title }} direto no run. Tá seguro?
+graders:
+  - name: loads-github-actions
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-actions"'

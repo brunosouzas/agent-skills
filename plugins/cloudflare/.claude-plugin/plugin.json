@@ -1,0 +1,17 @@
+{
+  "name": "cloudflare",
+  "displayName": "Cloudflare",
+  "description": "Cloudflare Workers and Pages: wrangler config, routes, webhook signatures, secrets, staging and production deploys and rollbacks, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "cloudflare",
+    "cloudflare-workers",
+    "cloudflare-pages",
+    "wrangler"
+  ]
+}

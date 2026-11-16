@@ -1,0 +1,22 @@
+{
+  "name": "shell",
+  "version": "1.0.0",
+  "description": "Bash and POSIX sh scripts, git hooks and pipeline steps: strict mode, quoting, guarded destructive commands and portability, as rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Shell",
+    "shortDescription": "Bash and POSIX sh",
+    "longDescription": "Rules with stable IDs for shell scripts (strict mode, quoting, guarded destructive commands, secrets, portability across Bash versions and sh), plus scripts for the checks that have one right answer.",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Write portable shell scripts"
+    ]
+  }
+}
