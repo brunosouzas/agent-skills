@@ -114,7 +114,7 @@
         }
       ]
     },
-    "plugins/languages/skills/java": {
+    "plugins/java/skills/java": {
       "component": "java",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
@@ -125,7 +125,19 @@
         }
       ]
     },
-    "plugins/languages/skills/python": {
+    "plugins/java": {
+      "component": "java-plugin",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/python/skills/python": {
       "component": "python",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
@@ -136,7 +148,19 @@
         }
       ]
     },
-    "plugins/languages/skills/shell": {
+    "plugins/python": {
+      "component": "python-plugin",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/shell/skills/shell": {
       "component": "shell",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
@@ -147,8 +171,8 @@
         }
       ]
     },
-    "plugins/languages": {
-      "component": "languages-plugin",
+    "plugins/shell": {
+      "component": "shell-plugin",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
@@ -159,7 +183,7 @@
         }
       ]
     },
-    "plugins/devops/skills/azure-devops": {
+    "plugins/azure-devops/skills/azure-devops": {
       "component": "azure-devops",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
@@ -170,30 +194,8 @@
         }
       ]
     },
-    "plugins/devops/skills/github-actions": {
-      "component": "github-actions",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md",
-      "extra-files": [
-        {
-          "type": "generic",
-          "path": "SKILL.md"
-        }
-      ]
-    },
-    "plugins/devops/skills/jenkins": {
-      "component": "jenkins",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md",
-      "extra-files": [
-        {
-          "type": "generic",
-          "path": "SKILL.md"
-        }
-      ]
-    },
-    "plugins/devops": {
-      "component": "devops-plugin",
+    "plugins/azure-devops": {
+      "component": "azure-devops-plugin",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
@@ -204,7 +206,53 @@
         }
       ]
     },
-    "plugins/web/skills/astro": {
+    "plugins/github-actions/skills/github-actions": {
+      "component": "github-actions",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "SKILL.md"
+        }
+      ]
+    },
+    "plugins/github-actions": {
+      "component": "github-actions-plugin",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/jenkins/skills/jenkins": {
+      "component": "jenkins",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "SKILL.md"
+        }
+      ]
+    },
+    "plugins/jenkins": {
+      "component": "jenkins-plugin",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/astro/skills/astro": {
       "component": "astro",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
@@ -215,7 +263,19 @@
         }
       ]
     },
-    "plugins/web/skills/cloudflare": {
+    "plugins/astro": {
+      "component": "astro-plugin",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/cloudflare/skills/cloudflare": {
       "component": "cloudflare",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
@@ -226,8 +286,8 @@
         }
       ]
     },
-    "plugins/web": {
-      "component": "web-plugin",
+    "plugins/cloudflare": {
+      "component": "cloudflare-plugin",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [

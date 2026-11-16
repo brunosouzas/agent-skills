@@ -1,0 +1,16 @@
+{
+  "name": "shell",
+  "displayName": "Shell",
+  "description": "Bash and POSIX sh scripts, git hooks and pipeline steps: strict mode, quoting, guarded destructive commands and portability, as rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "shell",
+    "bash",
+    "sh"
+  ]
+}

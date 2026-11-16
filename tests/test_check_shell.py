@@ -1,4 +1,4 @@
-"""Tests for plugins/languages/skills/shell/scripts/check-shell.py.
+"""Tests for plugins/shell/skills/shell/scripts/check-shell.py.
 
 What: each test writes a small script and checks what the script reports.
 Why: the script is the check of SH-1 and SHP-3; a wrong report sends an agent
@@ -10,7 +10,7 @@ import unittest
 
 from skill_script import load, run
 
-check = load("plugins/languages/skills/shell/scripts/check-shell.py", "check_shell")
+check = load("plugins/shell/skills/shell/scripts/check-shell.py", "check_shell")
 
 
 def rules(out):

@@ -1,6 +1,6 @@
 # Contributing
 
-This repository is a marketplace of plugins. Most hold specialty skills for one technology family (`mulesoft`, `api`, `languages`, `devops`, `web`): a specialty skill says what is particular to a technology, its rules, how to check them, and when to use it. It never says how a team works. One plugin, `delivery`, is a process instead ([Process skills](#process-skills)); it is optional, and no specialty depends on it.
+This repository is a marketplace of plugins. A plugin is what someone installs together. Most hold specialty skills for one technology (`mulesoft`, `api`, `java`, `python`, `shell`, `azure-devops`, `github-actions`, `jenkins`, `astro`, `cloudflare`): a plugin has one skill named after its technology, except `mulesoft`, whose four skills are used together. A specialty skill says what is particular to a technology, its rules, how to check them, and when to use it. It never says how a team works. One plugin, `delivery`, is a process instead ([Process skills](#process-skills)); it is optional, and no specialty depends on it.
 
 ## Writing rules
 

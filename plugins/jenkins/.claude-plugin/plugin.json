@@ -1,0 +1,17 @@
+{
+  "name": "jenkins",
+  "displayName": "Jenkins",
+  "description": "Jenkinsfiles and Groovy shared libraries: declarative pipelines, failure handling, credentials and parameters in sh steps, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "jenkins",
+    "jenkinsfile",
+    "ci",
+    "cd"
+  ]
+}

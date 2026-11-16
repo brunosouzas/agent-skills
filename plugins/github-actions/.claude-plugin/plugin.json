@@ -1,0 +1,17 @@
+{
+  "name": "github-actions",
+  "displayName": "GitHub Actions",
+  "description": "GitHub Actions workflows: pinned actions, least-privilege permissions, untrusted input, secrets and environments, as rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "github-actions",
+    "workflows",
+    "ci",
+    "cd"
+  ]
+}

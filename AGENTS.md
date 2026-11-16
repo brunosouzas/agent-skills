@@ -1,6 +1,6 @@
 # agent-skills: project context
 
-A marketplace of agent skills for software engineering, one plugin per technology family, installable in Claude Code and Codex. Read [README.md](README.md) for what is here and [CONTRIBUTING.md](CONTRIBUTING.md) for the rules every skill follows.
+A marketplace of agent skills for software engineering, one plugin per technology, installable in Claude Code and Codex. Read [README.md](README.md) for what is here and [CONTRIBUTING.md](CONTRIBUTING.md) for the rules every skill follows.
 
 ## Technology
 

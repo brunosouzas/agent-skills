@@ -1,4 +1,4 @@
-"""Tests for plugins/devops/skills/github-actions/scripts/check-workflows.py.
+"""Tests for plugins/github-actions/skills/github-actions/scripts/check-workflows.py.
 
 What: each test writes a small workflow or action and checks what the script reports.
 Why: the script is the check of GHAS-1 to GHAS-6, GHA-1 and GHA-2; a wrong
@@ -10,7 +10,7 @@ import unittest
 
 from skill_script import ROOT, load, run
 
-check = load("plugins/devops/skills/github-actions/scripts/check-workflows.py", "check_workflows")
+check = load("plugins/github-actions/skills/github-actions/scripts/check-workflows.py", "check_workflows")
 
 SHA = "3d3c42e5aac5ba805825da76410c181273ba90b1"
 

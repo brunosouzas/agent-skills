@@ -1,0 +1,15 @@
+{
+  "name": "python",
+  "displayName": "Python",
+  "description": "Python applications, CLIs and scripts with logic: locked dependencies, environments, safe paths, encodings and pytest tests, as rules with stable IDs and checks that run.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "python",
+    "pytest"
+  ]
+}

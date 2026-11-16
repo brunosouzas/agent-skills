@@ -8,10 +8,17 @@ Specialty skills for AI coding agents, in the open [Agent Skills](https://agents
 |---|---|---|
 | [mulesoft](plugins/mulesoft/README.md) | `mulesoft`, `dataweave`, `munit`, `mule-sdk` | Mule 4 applications, DataWeave, MUnit, Mule SDK connectors and shared assets |
 | [api](plugins/api/README.md) | `api-spec` | REST API specifications in RAML and OpenAPI |
-| [languages](plugins/languages/README.md) | `java`, `python`, `shell` | Standalone Java, Python, and Bash or sh scripts |
-| [devops](plugins/devops/README.md) | `azure-devops`, `github-actions`, `jenkins` | CI/CD pipelines in Azure Pipelines, GitHub Actions and Jenkins |
-| [web](plugins/web/README.md) | `astro`, `cloudflare` | Astro static sites, Cloudflare Workers and Pages |
+| [java](plugins/java/README.md) | `java` | Standalone Java applications, libraries and CLIs, and their JUnit tests |
+| [python](plugins/python/README.md) | `python` | Python applications, CLIs and scripts with logic, and their tests |
+| [shell](plugins/shell/README.md) | `shell` | Bash and POSIX sh scripts, git hooks and pipeline steps |
+| [azure-devops](plugins/azure-devops/README.md) | `azure-devops` | Azure Pipelines YAML, templates, variable groups and environments |
+| [github-actions](plugins/github-actions/README.md) | `github-actions` | GitHub Actions workflows, reusable workflows and composite actions |
+| [jenkins](plugins/jenkins/README.md) | `jenkins` | Jenkinsfiles and Groovy shared libraries |
+| [astro](plugins/astro/README.md) | `astro` | Astro static sites |
+| [cloudflare](plugins/cloudflare/README.md) | `cloudflare` | Cloudflare Workers and Pages |
 | [delivery](plugins/delivery/README.md) | `change-flow`, `merge-gates`, `delivery-models` | The process: plan, review, merge gates and delivery of a change (not a technology) |
+
+Each plugin is what you install together: one technology, one plugin, each holding the skill of the same name (`java:java`, `astro:astro`); `mulesoft` holds the four skills of the Mule stack, which are used together. Install only the ones your repositories use.
 
 ## Install
 
@@ -19,7 +26,7 @@ Claude Code:
 
 ```bash
 claude plugin marketplace add brunosouzas/agent-skills
-claude plugin install mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web, delivery
+claude plugin install mulesoft@brunosouzas-agent-skills   # or api, java, python, shell, azure-devops, github-actions, jenkins, astro, cloudflare, delivery
 ```
 
 From a local clone, pass its path to `claude plugin marketplace add` instead.
@@ -28,7 +35,7 @@ Codex (skills only):
 
 ```bash
 codex plugin marketplace add brunosouzas/agent-skills
-codex plugin add mulesoft@brunosouzas-agent-skills   # or api, languages, devops, web, delivery
+codex plugin add mulesoft@brunosouzas-agent-skills   # or api, java, python, shell, azure-devops, github-actions, jenkins, astro, cloudflare, delivery
 ```
 
 Other tools that read Agent Skills: copy or link `plugins/<plugin>/skills/<skill>/` into the tool's skills folder.
@@ -40,6 +47,14 @@ Each skill's `description` says what it does, when to use it, the words that tri
 ## Versions
 
 Every skill has its own semantic version (`metadata.version` in `SKILL.md`) and `CHANGELOG.md`; a review can cite exactly the rule it applied: "breaks DW-4 (dataweave 1.0.0)". How versions are raised: [CONTRIBUTING.md](CONTRIBUTING.md#versions) and [docs/releasing.md](docs/releasing.md).
+
+## Related open-source projects
+
+- [brunosouzas-design-system](https://github.com/brunosouzas/brunosouzas-design-system): a design system as a component and token package (an agent skill for it is planned).
+- [stackledger](https://github.com/brunosouzas/stackledger): a CLI that governs a software stack and its licences from a Git catalogue; the agent skill is in its repository.
+- [hermes-daily-reading](https://github.com/brunosouzas/hermes-daily-reading): a plugin for the Hermes agent that builds a daily reading digest from RSS and Atom feeds, ranked by your themes and read aloud.
+- [hermes-day-panel](https://github.com/brunosouzas/hermes-day-panel): a plugin for the Hermes agent that adds a Today page to Hermes Desktop from pluggable, read-only sources.
+- [hermes-kokoro-tts](https://github.com/brunosouzas/hermes-kokoro-tts): a plugin for the Hermes agent with local Kokoro text-to-speech on Apple Silicon, in nine languages.
 
 ## Contributing
 

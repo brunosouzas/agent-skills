@@ -1,0 +1,22 @@
+{
+  "name": "jenkins",
+  "version": "1.0.0",
+  "description": "Jenkinsfiles and Groovy shared libraries: declarative pipelines, failure handling, credentials and parameters in sh steps, as rules with stable IDs.",
+  "author": {
+    "name": "Bruno Souza"
+  },
+  "homepage": "https://github.com/brunosouzas/agent-skills",
+  "repository": "https://github.com/brunosouzas/agent-skills",
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Jenkins",
+    "shortDescription": "Jenkins pipelines",
+    "longDescription": "Rules with stable IDs for Jenkins pipelines (declarative Jenkinsfiles, shared libraries and their step signatures, failure handling, retries, credentials and parameters in sh steps).",
+    "developerName": "Bruno Souza",
+    "category": "Coding",
+    "capabilities": [
+      "Write Jenkins pipelines"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+schema_version: "1.1"
+name: none-mule-application
+description: "Routing: a request outside the plugin must not load java."
+tags: [routing, negative]
+runs: 3
+execution:
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    My Mule 4 application's pom.xml has mule-application packaging and the build fails on the mule-maven-plugin with a missing connector dependency. How do I fix the Mule build?
+graders:
+  - name: does-not-load-java
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?java"'
+    min: 0
+    max: 0
+    arm: both

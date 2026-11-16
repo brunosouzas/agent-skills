@@ -1,4 +1,4 @@
-"""Tests for plugins/devops/skills/azure-devops/scripts/check-pipelines.py.
+"""Tests for plugins/azure-devops/skills/azure-devops/scripts/check-pipelines.py.
 
 What: each test writes a small pipeline and checks what the script reports.
 Why: the script is the check of ADO-5, ADOD-2 and ADOD-3; a wrong report sends
@@ -10,7 +10,7 @@ import unittest
 
 from skill_script import load, run
 
-check = load("plugins/devops/skills/azure-devops/scripts/check-pipelines.py", "check_pipelines")
+check = load("plugins/azure-devops/skills/azure-devops/scripts/check-pipelines.py", "check_pipelines")
 
 CLEAN = """trigger:
   branches:

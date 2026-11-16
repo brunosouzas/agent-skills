@@ -29,10 +29,10 @@
       "category": "Coding"
     },
     {
-      "name": "languages",
+      "name": "java",
       "source": {
         "source": "local",
-        "path": "./plugins/languages"
+        "path": "./plugins/java"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -41,10 +41,10 @@
       "category": "Coding"
     },
     {
-      "name": "devops",
+      "name": "python",
       "source": {
         "source": "local",
-        "path": "./plugins/devops"
+        "path": "./plugins/python"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -53,10 +53,70 @@
       "category": "Coding"
     },
     {
-      "name": "web",
+      "name": "shell",
       "source": {
         "source": "local",
-        "path": "./plugins/web"
+        "path": "./plugins/shell"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "azure-devops",
+      "source": {
+        "source": "local",
+        "path": "./plugins/azure-devops"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "github-actions",
+      "source": {
+        "source": "local",
+        "path": "./plugins/github-actions"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "jenkins",
+      "source": {
+        "source": "local",
+        "path": "./plugins/jenkins"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "astro",
+      "source": {
+        "source": "local",
+        "path": "./plugins/astro"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "cloudflare",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cloudflare"
       },
       "policy": {
         "installation": "AVAILABLE",
