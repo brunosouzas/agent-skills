@@ -21,7 +21,7 @@ An agent loads the skill whose `name` or one of whose `metadata.aliases` matches
 | MUnit, MUnit 3, MUnit Tools | `munit` |
 | Mule SDK, Mule extension, Mule connector, mule-plugin, dw-library | `mule-sdk` |
 
-The other plugins, one per technology (each holds the skill of the same name):
+The other plugins, one per technology (each holds the skill of the same name, except `api`, which holds `api-spec`):
 
 | Name on the line | Plugin and skill |
 |---|---|

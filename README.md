@@ -18,7 +18,7 @@ Specialty skills for AI coding agents, in the open [Agent Skills](https://agents
 | [cloudflare](plugins/cloudflare/README.md) | `cloudflare` | Cloudflare Workers and Pages |
 | [delivery](plugins/delivery/README.md) | `change-flow`, `merge-gates`, `delivery-models` | The process: plan, review, merge gates and delivery of a change (not a technology) |
 
-Each plugin is what you install together: one technology, one plugin, each holding the skill of the same name (`java:java`, `astro:astro`); `mulesoft` holds the four skills of the Mule stack, which are used together. Install only the ones your repositories use.
+Each plugin is what you install together: one technology, one plugin, most holding the skill of the same name (`java:java`, `astro:astro`); `api` holds `api-spec`, `mulesoft` the four skills of the Mule stack, which are used together, and `delivery` the three process skills. Install only the ones your repositories use.
 
 ## Install
 
@@ -50,7 +50,7 @@ Every skill has its own semantic version (`metadata.version` in `SKILL.md`) and 
 
 ## Related open-source projects
 
-- [brunosouzas-design-system](https://github.com/brunosouzas/brunosouzas-design-system): a design system as a component and token package (an agent skill for it is planned).
+- [brunosouzas-design-system](https://github.com/brunosouzas/brunosouzas-design-system): design tokens and Remotion motion components for a personal site's visual identity.
 - [stackledger](https://github.com/brunosouzas/stackledger): a CLI that governs a software stack and its licences from a Git catalogue; the agent skill is in its repository.
 - [hermes-daily-reading](https://github.com/brunosouzas/hermes-daily-reading): a plugin for the Hermes agent that builds a daily reading digest from RSS and Atom feeds, ranked by your themes and read aloud.
 - [hermes-day-panel](https://github.com/brunosouzas/hermes-day-panel): a plugin for the Hermes agent that adds a Today page to Hermes Desktop from pluggable, read-only sources.
