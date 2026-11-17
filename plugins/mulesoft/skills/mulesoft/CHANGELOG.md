@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/brunosouzas/agent-skills/compare/mulesoft-v1.0.1...mulesoft-v1.1.0) (2026-11-17)
+
+
+### Features
+
+* **mulesoft:** apply EIP patterns in Mule flows ([#10](https://github.com/brunosouzas/agent-skills/issues/10)) ([fb9d502](https://github.com/brunosouzas/agent-skills/commit/fb9d502facc51ee9e0d9dac31cfaf836979c935a))
+
 ## [1.0.1](https://github.com/brunosouzas/agent-skills/compare/mulesoft-v1.0.0...mulesoft-v1.0.1) (2026-11-15)
 
 
