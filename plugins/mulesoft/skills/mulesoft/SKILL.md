@@ -3,7 +3,7 @@ name: mulesoft
 description: "Rules and checks for Mule 4 applications: flows, layout, configuration and properties, error handling, logging, Anypoint and CloudHub 2.0 deployment config, API Manager policies and the Maven build. Use when writing, changing or reviewing a Mule 4 application, a flow XML file under src/main/mule/, its global configuration or its properties; recognise it by a pom.xml with mule-application packaging or a mule-artifact.json. Also the integration patterns a flow needs (dead letter, idempotent receiver, correlation identifier, publish-subscribe, circuit breaker), applied when they fit. Triggers: Mule, Mule 4, MuleSoft, Mule flow, APIkit, Anypoint, CloudHub, integration pattern, dead letter, idempotent, circuit breaker. Not for DataWeave scripts on their own (dataweave skill), MUnit tests (munit skill), Mule SDK connectors, shared plugins or DataWeave libraries as assets (mule-sdk skill), the RAML or OpenAPI spec (api-spec skill), or the CI/CD pipeline (azure-devops, github-actions or jenkins skill)."
 license: Apache-2.0
 metadata:
-  version: "1.1.0" # x-release-please-version
+  version: "1.2.0" # x-release-please-version
   aliases: "mule, mule 4, anypoint, apikit, cloudhub"
 ---
 

@@ -3,7 +3,7 @@ name: api-spec
 description: "Rules for REST API specifications in RAML 1.0 or OpenAPI 3: resources and methods, data types, error responses, examples, versioning and security schemes. Use when writing, changing or reviewing an API contract from its requirements: a *.raml file, an openapi.yaml or openapi.json, their types, examples, traits and shared fragments, or an exchange.json with a rest-api classifier. Triggers: RAML, OpenAPI, OAS, Swagger, API spec, API contract, API design. Not for deciding what the API must do (the requirements come first), implementing it in a Mule flow (mulesoft skill), or the DataWeave that maps its payloads (dataweave skill)."
 license: Apache-2.0
 metadata:
-  version: "1.0.0" # x-release-please-version
+  version: "1.1.0" # x-release-please-version
   aliases: "raml, openapi, oas, swagger"
 ---
 

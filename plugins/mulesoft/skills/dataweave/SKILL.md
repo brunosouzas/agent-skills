@@ -3,7 +3,7 @@ name: dataweave
 description: "Rules for DataWeave 2: scripts, modules, functions, types, null handling, pattern matching, dates and numbers, performance and tests. Use when writing, changing, reviewing or explaining a DataWeave transform, a .dwl script or module, a DataWeave library (dw-library) or an isolated DataWeave snippet; recognise it by .dwl files, %dw 2.0 headers or ee:transform elements. Triggers: DataWeave, DataWeave 2, DWL, .dwl, Transform Message script. Not for the Mule flow around a transform, its connectors or error handling (mulesoft skill), MUnit suite structure (munit skill), or publishing a DataWeave library as an asset (mule-sdk skill)."
 license: Apache-2.0
 metadata:
-  version: "1.0.1" # x-release-please-version
+  version: "1.1.0" # x-release-please-version
   aliases: "dataweave 2, dwl"
 ---
 
