@@ -1,10 +1,10 @@
 {
   "name": "java-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Version record of the java plugin for release-please; its dependencies are its skills, so a skill release raises the plugin's version. Not an npm package.",
   "license": "Apache-2.0",
   "dependencies": {
-    "java": "1.0.0"
+    "java": "1.0.1"
   }
 }

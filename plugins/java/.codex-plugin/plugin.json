@@ -1,6 +1,6 @@
 {
   "name": "java",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Standalone Java: the build and JDK a project declares, dependencies, nulls, exceptions and JUnit tests, as rules with stable IDs.",
   "author": {
     "name": "Bruno Souza"
