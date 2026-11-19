@@ -6,8 +6,8 @@ Specialty skills for AI coding agents, in the open [Agent Skills](https://agents
 
 | Plugin | Skills | For |
 |---|---|---|
-| [mulesoft](plugins/mulesoft/README.md) | `mulesoft`, `dataweave`, `munit`, `mule-sdk` | Mule 4 applications, DataWeave, MUnit, Mule SDK connectors and shared assets |
-| [api](plugins/api/README.md) | `api-spec` | REST API specifications in RAML and OpenAPI |
+| [mulesoft](plugins/mulesoft/README.md) | `mulesoft`, `dataweave`, `munit`, `mule-sdk` | **Deprecated**: moved to [devFoundry](https://github.com/brunosouzas/devfoundry-plugins). Mule 4 applications, DataWeave, MUnit, Mule SDK connectors and shared assets |
+| [api](plugins/api/README.md) | `api-spec` | **Deprecated**: moved to [devFoundry](https://github.com/brunosouzas/devfoundry-plugins). REST API specifications in RAML and OpenAPI |
 | [java](plugins/java/README.md) | `java` | Standalone Java applications, libraries and CLIs, and their JUnit tests |
 | [python](plugins/python/README.md) | `python` | Python applications, CLIs and scripts with logic, and their tests |
 | [shell](plugins/shell/README.md) | `shell` | Bash and POSIX sh scripts, git hooks and pipeline steps |

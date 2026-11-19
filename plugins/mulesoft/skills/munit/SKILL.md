@@ -7,6 +7,8 @@ metadata:
   aliases: "munit 3, munit tools"
 ---
 
+> **Deprecated:** this skill moved to devFoundry as `mule-engineering:munit` (the `devfoundry` marketplace; see this plugin's README), with the same rule IDs. It still works, gets no new rules, and will be removed.
+
 # MUnit
 
 What is particular to testing Mule 4 applications with MUnit. The flow under test follows `mulesoft`, and the DataWeave in its inputs and assertions follows `dataweave`, if they are installed.

@@ -1,5 +1,9 @@
 # api plugin
 
+> **Deprecated.** These skills moved to [devFoundry](https://github.com/brunosouzas/devfoundry-plugins) (marketplace `devfoundry`), which keeps their rule IDs and adds verified Mule examples, a project profile and API-first implementation. Install it instead: `claude plugin marketplace add brunosouzas/devfoundry-plugins`, then `claude plugin install api-contracts@devfoundry`. This plugin gets no new rules and will be removed from this marketplace.
+
+Where each skill went: `api-spec` → `api-contracts:api-contract`, with the same RES, CON and APISEC rules.
+
 ```bash
 claude plugin marketplace add brunosouzas/agent-skills
 claude plugin install api@brunosouzas-agent-skills

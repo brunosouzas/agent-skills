@@ -7,6 +7,8 @@ metadata:
   aliases: "dataweave 2, dwl"
 ---
 
+> **Deprecated:** this skill moved to devFoundry as `mule-engineering:dataweave` (the `devfoundry` marketplace; see this plugin's README), with the same rule IDs. It still works, gets no new rules, and will be removed.
+
 # DataWeave
 
 What is particular to DataWeave 2 work, inside a Mule application or on its own. When the transform sits in a flow, the flow itself follows `mulesoft`, if installed.

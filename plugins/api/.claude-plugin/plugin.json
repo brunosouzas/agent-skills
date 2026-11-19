@@ -1,7 +1,7 @@
 {
   "name": "api",
   "displayName": "API specs",
-  "description": "REST API specifications in RAML and OpenAPI: resources, data types, errors, examples, versioning and security, as rules with stable IDs.",
+  "description": "Deprecated: moved to devFoundry (brunosouzas/devfoundry-plugins), which keeps the rule IDs. REST API specifications in RAML and OpenAPI: resources, data types, errors, examples, versioning and security, as rules with stable IDs.",
   "author": {
     "name": "Bruno Souza"
   },
