@@ -1,5 +1,9 @@
 # mulesoft plugin
 
+> **Deprecated.** These skills moved to [devFoundry](https://github.com/brunosouzas/devfoundry-plugins) (marketplace `devfoundry`), which keeps their rule IDs and adds verified Mule examples, a project profile and API-first implementation. Install it instead: `claude plugin marketplace add brunosouzas/devfoundry-plugins`, then `claude plugin install mule-engineering@devfoundry`. This plugin gets no new rules and will be removed from this marketplace.
+
+Where each skill went: `mulesoft` → `mule-engineering:mule-app` (and `apikit`); `dataweave` → `mule-engineering:dataweave`; `munit` → `mule-engineering:munit`; `mule-sdk` → `mule-engineering:mule-sdk`. The naming rules FLOW-5, FLOW-6 and DW-3 and the deploy rules PLAT-1, PLAT-3 to PLAT-5 are not in devFoundry: they belong to a project's or a company's own conventions and delivery.
+
 ```bash
 claude plugin marketplace add brunosouzas/agent-skills
 claude plugin install mulesoft@brunosouzas-agent-skills

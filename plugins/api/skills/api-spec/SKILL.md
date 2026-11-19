@@ -7,6 +7,8 @@ metadata:
   aliases: "raml, openapi, oas, swagger"
 ---
 
+> **Deprecated:** this skill moved to devFoundry as `api-contracts:api-contract` (the `devfoundry` marketplace; see this plugin's README), with the same rule IDs. It still works, gets no new rules, and will be removed.
+
 # API spec
 
 What is particular to writing a REST API contract. The requirements (what the API must do, its scenarios) come before the spec; this skill turns them into it. The implementation follows `mulesoft` or the language's skill, if installed.

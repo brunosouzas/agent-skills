@@ -7,6 +7,8 @@ metadata:
   aliases: "mule, mule 4, anypoint, apikit, cloudhub"
 ---
 
+> **Deprecated:** this skill moved to devFoundry as `mule-engineering:mule-app` and `mule-engineering:apikit` (the `devfoundry` marketplace; see this plugin's README), with the same rule IDs. It still works, gets no new rules, and will be removed.
+
 # MuleSoft
 
 What is particular to Mule 4 application work: flows, layout, configuration, errors, logging, the platform and the build. Other parts of a Mule project have their own skills in this plugin; use them when they are installed:

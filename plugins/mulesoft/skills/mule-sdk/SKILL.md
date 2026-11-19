@@ -7,6 +7,8 @@ metadata:
   aliases: "mule sdk, mule extension, mule connector, mule-plugin, dw-library"
 ---
 
+> **Deprecated:** this skill moved to devFoundry as `mule-engineering:mule-sdk` (the `devfoundry` marketplace; see this plugin's README), with the same rule IDs. It still works, gets no new rules, and will be removed.
+
 # Mule SDK and shared assets
 
 What is particular to Mule 4 assets that applications depend on: connectors (Mule SDK), shared Mule plugins and DataWeave libraries. What makes them different from an application is that their exported surface is a contract: every consumer breaks when it changes. The DataWeave code of a library follows `dataweave`, and the build toolchain follows `mulesoft` BUILD-1, if they are installed.
