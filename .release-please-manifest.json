@@ -1,6 +1,6 @@
 {
-  "plugins/java/skills/java": "1.0.0",
-  "plugins/java": "1.0.0",
+  "plugins/java/skills/java": "1.0.1",
+  "plugins/java": "1.0.1",
   "plugins/python/skills/python": "1.0.0",
   "plugins/python": "1.0.0",
   "plugins/shell/skills/shell": "1.0.0",

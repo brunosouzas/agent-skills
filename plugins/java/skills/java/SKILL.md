@@ -3,7 +3,7 @@ name: java
 description: "Rules for standalone Java code: the JDK and build the project declares (Maven or Gradle wrapper), dependency management, releases, resources, nulls, exceptions, stable public types and JUnit tests. Use when writing, changing, reviewing or fixing a Java application, library or CLI and its tests; recognise it by a pom.xml whose packaging is jar, war or pom (not a Mule one), a build.gradle or build.gradle.kts, or *.java sources. Triggers: Java, JDK, JUnit, JUnit 5, Maven, Gradle, Spring Boot, Mockito, AssertJ. Not for a Mule application, plugin or connector even when it has Java inside (devFoundry's mule-engineering plugin), Groovy in a Jenkins shared library (jenkins skill), or Python code (python skill)."
 license: Apache-2.0
 metadata:
-  version: "1.0.0" # x-release-please-version
+  version: "1.0.1" # x-release-please-version
   aliases: "jdk, junit, gradle, maven, spring boot"
 ---
 
