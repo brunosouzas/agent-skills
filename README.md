@@ -6,8 +6,6 @@ Specialty skills for AI coding agents, in the open [Agent Skills](https://agents
 
 | Plugin | Skills | For |
 |---|---|---|
-| [mulesoft](plugins/mulesoft/README.md) | `mulesoft`, `dataweave`, `munit`, `mule-sdk` | **Deprecated**: moved to [devFoundry](https://github.com/brunosouzas/devfoundry-plugins). Mule 4 applications, DataWeave, MUnit, Mule SDK connectors and shared assets |
-| [api](plugins/api/README.md) | `api-spec` | **Deprecated**: moved to [devFoundry](https://github.com/brunosouzas/devfoundry-plugins). REST API specifications in RAML and OpenAPI |
 | [java](plugins/java/README.md) | `java` | Standalone Java applications, libraries and CLIs, and their JUnit tests |
 | [python](plugins/python/README.md) | `python` | Python applications, CLIs and scripts with logic, and their tests |
 | [shell](plugins/shell/README.md) | `shell` | Bash and POSIX sh scripts, git hooks and pipeline steps |
@@ -18,7 +16,7 @@ Specialty skills for AI coding agents, in the open [Agent Skills](https://agents
 | [cloudflare](plugins/cloudflare/README.md) | `cloudflare` | Cloudflare Workers and Pages |
 | [delivery](plugins/delivery/README.md) | `change-flow`, `merge-gates`, `delivery-models` | The process: plan, review, merge gates and delivery of a change (not a technology) |
 
-Each plugin is what you install together: one technology, one plugin, most holding the skill of the same name (`java:java`, `astro:astro`); `api` holds `api-spec`, `mulesoft` the four skills of the Mule stack, which are used together, and `delivery` the three process skills. Install only the ones your repositories use.
+Each plugin is what you install together: one technology, one plugin, most holding the skill of the same name (`java:java`, `astro:astro`), and `delivery` holds the three process skills. The MuleSoft and API skills (the former `mulesoft` and `api` plugins) moved to [devFoundry](https://github.com/brunosouzas/devfoundry-plugins), with the same rule IDs. Install only the ones your repositories use.
 
 ## Install
 
@@ -26,7 +24,7 @@ Claude Code:
 
 ```bash
 claude plugin marketplace add brunosouzas/agent-skills
-claude plugin install mulesoft@brunosouzas-agent-skills   # or api, java, python, shell, azure-devops, github-actions, jenkins, astro, cloudflare, delivery
+claude plugin install java@brunosouzas-agent-skills   # or python, shell, azure-devops, github-actions, jenkins, astro, cloudflare, delivery
 ```
 
 From a local clone, pass its path to `claude plugin marketplace add` instead.
@@ -35,18 +33,18 @@ Codex (skills only):
 
 ```bash
 codex plugin marketplace add brunosouzas/agent-skills
-codex plugin add mulesoft@brunosouzas-agent-skills   # or api, java, python, shell, azure-devops, github-actions, jenkins, astro, cloudflare, delivery
+codex plugin add java@brunosouzas-agent-skills   # or python, shell, azure-devops, github-actions, jenkins, astro, cloudflare, delivery
 ```
 
 Other tools that read Agent Skills: copy or link `plugins/<plugin>/skills/<skill>/` into the tool's skills folder.
 
 ## How a skill is chosen
 
-Each skill's `description` says what it does, when to use it, the words that trigger it and when not to use it, so a tool loads only the skill a request needs: "fix this DataWeave function" loads `dataweave`, a Mule flow loads `mulesoft`. A repository can also name its technologies on a `Stack:` line of its `AGENTS.md` ([docs/agents-md.md](docs/agents-md.md)).
+Each skill's `description` says what it does, when to use it, the words that trigger it and when not to use it, so a tool loads only the skill a request needs: "fix this Bash script" loads `shell`, a Gradle build loads `java`. A repository can also name its technologies on a `Stack:` line of its `AGENTS.md` ([docs/agents-md.md](docs/agents-md.md)).
 
 ## Versions
 
-Every skill has its own semantic version (`metadata.version` in `SKILL.md`) and `CHANGELOG.md`; a review can cite exactly the rule it applied: "breaks DW-4 (dataweave 1.0.0)". How versions are raised: [CONTRIBUTING.md](CONTRIBUTING.md#versions) and [docs/releasing.md](docs/releasing.md).
+Every skill has its own semantic version (`metadata.version` in `SKILL.md`) and `CHANGELOG.md`; a review can cite exactly the rule it applied: "breaks JBLD-1 (java 1.0.0)". How versions are raised: [CONTRIBUTING.md](CONTRIBUTING.md#versions) and [docs/releasing.md](docs/releasing.md).
 
 ## Related open-source projects
 

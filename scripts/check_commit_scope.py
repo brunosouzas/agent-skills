@@ -5,7 +5,7 @@ What it does
     Takes the pull request title and the files it changes. The title must be a
     Conventional Commit (`type(scope)!: subject`). When a changed file is inside
     a skill (plugins/<plugin>/skills/<skill>/...), the scope must name that
-    skill; several skills are separated by commas: `fix(dataweave,munit): ...`.
+    skill; several skills are separated by commas: `fix(java,python): ...`.
     The release pull request of release-please (`chore: release main`) is
     exempt: it touches every released skill by design.
 
@@ -13,11 +13,11 @@ Why it exists
     The pull request title becomes the squash commit, and release-please writes
     each skill's CHANGELOG from it. release-please decides which skill a commit
     belongs to by the paths it touches; the scope makes the title say the same
-    thing, so a changelog line and a reviewer's citation ("DW-4 (dataweave
+    thing, so a changelog line and a reviewer's citation ("JBLD-1 (java
     1.3.0)") name the skill that changed. CONTRIBUTING.md, rule 8.
 
 How to run
-    python3 scripts/check_commit_scope.py --title "feat(dataweave): ..." FILE ...
+    python3 scripts/check_commit_scope.py --title "feat(java): ..." FILE ...
     python3 scripts/check_commit_scope.py --title "..." --base origin/main
     With --base, the changed files are `git diff --name-only <base>...HEAD`.
     Exit code: 0 the title fits, 1 it does not (the reason is printed).

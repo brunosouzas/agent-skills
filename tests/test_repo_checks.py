@@ -18,39 +18,39 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import check_commit_scope  # noqa: E402
 import check_repo  # noqa: E402
 
-DW = "plugins/mulesoft/skills/dataweave/rules.md"
-MUNIT = "plugins/mulesoft/skills/munit/SKILL.md"
+JAVA = "plugins/java/skills/java/rules.md"
+PYTHON = "plugins/python/skills/python/SKILL.md"
 
 
 class CommitScopeTest(unittest.TestCase):
     def test_scope_naming_the_skill_passes(self):
-        self.assertEqual(check_commit_scope.problems("feat(dataweave): add DW-10", [DW]), [])
+        self.assertEqual(check_commit_scope.problems("feat(java): add JBLD-9", [JAVA]), [])
 
     def test_missing_scope_on_a_skill_fails(self):
-        found = check_commit_scope.problems("fix: typo", [DW])
+        found = check_commit_scope.problems("fix: typo", [JAVA])
         self.assertEqual(len(found), 1)
-        self.assertIn("fix(dataweave): ...", found[0])
+        self.assertIn("fix(java): ...", found[0])
 
     def test_every_touched_skill_must_be_named(self):
-        found = check_commit_scope.problems("fix(dataweave): x", [DW, MUNIT])
-        self.assertIn("munit", found[0])
-        self.assertEqual(check_commit_scope.problems("fix(dataweave, munit)!: x", [DW, MUNIT]), [])
+        found = check_commit_scope.problems("fix(java): x", [JAVA, PYTHON])
+        self.assertIn("python", found[0])
+        self.assertEqual(check_commit_scope.problems("fix(java, python)!: x", [JAVA, PYTHON]), [])
 
     def test_change_outside_skills_needs_no_scope(self):
         self.assertEqual(check_commit_scope.problems("ci: pin actions", [".github/workflows/ci.yml"]), [])
 
     def test_title_must_be_conventional(self):
-        self.assertTrue(check_commit_scope.problems("Update dataweave rules", [DW]))
-        self.assertTrue(check_commit_scope.problems("feature(dataweave): x", [DW]))
+        self.assertTrue(check_commit_scope.problems("Update java rules", [JAVA]))
+        self.assertTrue(check_commit_scope.problems("feature(java): x", [JAVA]))
 
     def test_release_pull_request_is_exempt(self):
-        self.assertEqual(check_commit_scope.problems("chore(main): release dataweave 1.1.0", [DW]), [])
-        self.assertEqual(check_commit_scope.problems("chore(main): release main", [DW]), [])
-        self.assertEqual(check_commit_scope.problems("chore: release main", [DW]), [])
+        self.assertEqual(check_commit_scope.problems("chore(main): release java 1.1.0", [JAVA]), [])
+        self.assertEqual(check_commit_scope.problems("chore(main): release main", [JAVA]), [])
+        self.assertEqual(check_commit_scope.problems("chore: release main", [JAVA]), [])
 
     def test_a_chore_that_only_looks_like_a_release_is_not_exempt(self):
-        self.assertTrue(check_commit_scope.problems("chore: release everything now", [DW]))
-        self.assertTrue(check_commit_scope.problems("chore: release main and more", [DW]))
+        self.assertTrue(check_commit_scope.problems("chore: release everything now", [JAVA]))
+        self.assertTrue(check_commit_scope.problems("chore: release main and more", [JAVA]))
 
 
 class FrontmatterTest(unittest.TestCase):
@@ -95,9 +95,9 @@ class RepositoryTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             copy = Path(folder) / "repo"
             shutil.copytree(check_repo.ROOT, copy, ignore=shutil.ignore_patterns(".git", "results", "__pycache__"))
-            record = copy / "plugins/mulesoft/package.json"
+            record = copy / "plugins/delivery/package.json"
             data = json.loads(record.read_text(encoding="utf-8"))
-            del data["dependencies"]["munit"]
+            del data["dependencies"]["merge-gates"]
             record.write_text(json.dumps(data), encoding="utf-8")
             root, check_repo.ROOT = check_repo.ROOT, copy
             out = io.StringIO()
@@ -107,7 +107,7 @@ class RepositoryTest(unittest.TestCase):
             finally:
                 check_repo.ROOT = root
         self.assertEqual(code, 1)
-        self.assertIn("dependencies must list the skill 'munit'", out.getvalue())
+        self.assertIn("dependencies must list the skill 'merge-gates'", out.getvalue())
 
     def run_on_copy(self, change):
         """Run check_repo on a copy of the tree after change(copy); return (code, output)."""
@@ -129,7 +129,7 @@ class RepositoryTest(unittest.TestCase):
         # A specialty must work without the delivery plugin (CONTRIBUTING.md, Process skills).
         for text in ("Follow merge-gates before merging.", "Load delivery:change-flow first.", "Merge-gates decides."):
             def change(copy, text=text):
-                rules = copy / DW
+                rules = copy / JAVA
                 rules.write_text(rules.read_text(encoding="utf-8") + "\n" + text + "\n", encoding="utf-8")
             code, out = self.run_on_copy(change)
             self.assertEqual(code, 1, text)
@@ -138,7 +138,7 @@ class RepositoryTest(unittest.TestCase):
     def test_near_misses_are_not_process_skills(self):
         # Plain words and AGENTS.md lines are not skill names.
         def change(copy):
-            rules = copy / DW
+            rules = copy / JAVA
             rules.write_text(rules.read_text(encoding="utf-8") + "\nRead the merge gates and the Delivery: line; pre-merge-gates hooks run.\n", encoding="utf-8")
         code, out = self.run_on_copy(change)
         self.assertEqual(code, 0, out)

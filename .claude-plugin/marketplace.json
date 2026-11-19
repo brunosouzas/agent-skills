@@ -8,16 +8,6 @@
   },
   "plugins": [
     {
-      "name": "mulesoft",
-      "source": "./plugins/mulesoft",
-      "description": "Mule 4 applications, DataWeave, MUnit and the Mule SDK: rules with stable IDs and checks that run."
-    },
-    {
-      "name": "api",
-      "source": "./plugins/api",
-      "description": "REST API specifications in RAML and OpenAPI: resources, data types, errors, examples, versioning and security, as rules with stable IDs."
-    },
-    {
       "name": "java",
       "source": "./plugins/java",
       "description": "Standalone Java: the build and JDK a project declares, dependencies, nulls, exceptions and JUnit tests, as rules with stable IDs."

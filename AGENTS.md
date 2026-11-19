@@ -16,7 +16,7 @@ Integration branch: `main`
 
 ## Rules for changing this repository
 
-- A change is a branch and a pull request, squash-merged; its title is a Conventional Commit whose scope names every skill it touches (`feat(dataweave): ...`). CI checks it.
+- A change is a branch and a pull request, squash-merged; its title is a Conventional Commit whose scope names every skill it touches (`feat(java): ...`). CI checks it.
 - Skills follow the writing rules in CONTRIBUTING.md: no process or person, a description that routes, short files, scripts for what has a right answer, no personal or environment facts, stable rule IDs (retire, never delete), evals and a version for every skill.
 - Scripts use the Python standard library only (3.9 or newer) and start with a header saying what they do, why they exist, how to run them and what can go wrong; every block has a comment saying why.
 - Everything is in English.

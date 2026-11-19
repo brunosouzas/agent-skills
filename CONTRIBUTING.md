@@ -1,6 +1,6 @@
 # Contributing
 
-This repository is a marketplace of plugins. A plugin is what someone installs together. Most hold specialty skills for one technology (`mulesoft`, `api`, `java`, `python`, `shell`, `azure-devops`, `github-actions`, `jenkins`, `astro`, `cloudflare`): a plugin has one skill named after its technology, except `api` (its skill is `api-spec`) and `mulesoft`, whose four skills are used together. A specialty skill says what is particular to a technology, its rules, how to check them, and when to use it. It never says how a team works. One plugin, `delivery`, is a process instead ([Process skills](#process-skills)); it is optional, and no specialty depends on it.
+This repository is a marketplace of plugins. A plugin is what someone installs together. Most hold specialty skills for one technology (`java`, `python`, `shell`, `azure-devops`, `github-actions`, `jenkins`, `astro`, `cloudflare`): a plugin has one skill named after its technology. A specialty skill says what is particular to a technology, its rules, how to check them, and when to use it. It never says how a team works. One plugin, `delivery`, is a process instead ([Process skills](#process-skills)); it is optional, and no specialty depends on it.
 
 ## Writing rules
 
@@ -9,7 +9,7 @@ This repository is a marketplace of plugins. A plugin is what someone installs t
 3. **Short files.** `SKILL.md` has about 100 lines at most: when to use the skill, how to work in a few steps, and where the rules are. A `rules.md` over about 150 lines is split into `references/<subject>.md`, and `SKILL.md` says when to read each one.
 4. **What has a right answer becomes a script.** A check that a program can decide (a missing attribute, a forbidden default, a file layout) is a script in the skill's `scripts/`, with a test in `tests/`, and the rule's `Check:` line names it. Scripts use the Python standard library only and start with a header saying what they do, why, how to run them and what can go wrong.
 5. **No personal or environment facts.** No machine, user name, home path, `JAVA_HOME` value, board card, notes vault or company. A fact true only on one machine belongs in that user's own agent instructions, not in a shared skill. `scripts/check_repo.py` refuses the common ones.
-6. **Rule IDs are stable.** A rule keeps its ID for life (`DW-4`), also when it moves to another skill of the repository. A rule that no longer applies is retired, not deleted: keep its ID and heading and replace its text with `(retired in <version>: <reason>)`. A number is never reused. CI refuses a pull request that removes an ID.
+6. **Rule IDs are stable.** A rule keeps its ID for life (`JBLD-1`), also when it moves to another skill of the repository. A rule that no longer applies is retired, not deleted: keep its ID and heading and replace its text with `(retired in <version>: <reason>)`. A number is never reused. CI refuses a pull request that removes an ID.
 7. **Every skill has evals.** Each skill has at least one routing case that must load it and one that must not (see [Evals](#evals)).
 8. **Every skill has a version.** `metadata.version` in the frontmatter, starting at `1.0.0`, on the line marked `# x-release-please-version`; release-please raises it (see [Versions](#versions)).
 
@@ -37,12 +37,12 @@ Frontmatter (the [Agent Skills](https://agentskills.io/specification) format; `m
 
 ```yaml
 ---
-name: dataweave
-description: "Rules for DataWeave 2: ... Use when ... Triggers: ... Not for ..."
+name: java
+description: "Rules for standalone Java code: ... Use when ... Triggers: ... Not for ..."
 license: Apache-2.0
 metadata:
   version: "1.0.0" # x-release-please-version
-  aliases: "dataweave 2, dwl"
+  aliases: "jdk, maven, gradle"
 ---
 ```
 
@@ -51,9 +51,9 @@ metadata:
 A rule:
 
 ```markdown
-- **DW-7** Give every `match` an `else` that maps the unexpected case or fails with a message naming it.
-  Why: a `match` with no `else` throws a generic error at runtime.
-  Check: each `match` has an `else` case.
+- **JBLD-1** Build with the wrapper the project ships (`./mvnw`, `./gradlew`), not a tool installed on the machine.
+  Why: the wrapper pins the build tool's version; a machine's own version builds something else.
+  Check: the commands in the change use the wrapper.
 ```
 
 A rule marked `(locked)` protects secrets, personal data or sensitive logs: a project's own convention never overrides it.
@@ -68,12 +68,12 @@ Each skill and each plugin is a release-please package ([docs/releasing.md](docs
 | **MINOR** | A new rule, reference or script; the description covers more cases |
 | **PATCH** | Wording, a clearer `Why:` or `Check:`, a fixed link or typo |
 
-A reviewer cites the rule and the version it read: "breaks DW-4 (dataweave 1.3.0)".
+A reviewer cites the rule and the version it read: "breaks JBLD-1 (java 1.3.0)".
 
 ## Commits and pull requests
 
 - One change per pull request, squash-merged. The pull request title becomes the commit, so it is a [Conventional Commit](https://www.conventionalcommits.org/): `feat` (MINOR), `fix` (PATCH), `feat!` or a `BREAKING CHANGE:` footer (MAJOR); `docs`, `chore`, `ci`, `test`, `refactor` release nothing.
-- **The scope names every skill the change touches**, comma-separated: `feat(dataweave): add DW-10 for streaming`, `fix(dataweave,munit): ...`. CI refuses a title without it (`scripts/check_commit_scope.py`). release-please assigns the commit to each skill by the paths it changes and writes the title into that skill's `CHANGELOG.md`.
+- **The scope names every skill the change touches**, comma-separated: `feat(java): add JBLD-9 for toolchains`, `fix(java,python): ...`. CI refuses a title without it (`scripts/check_commit_scope.py`). release-please assigns the commit to each skill by the paths it changes and writes the title into that skill's `CHANGELOG.md`.
 - A rule that moves between skills keeps its ID: it is a MINOR in the skill that receives it and a MAJOR in the one that loses it.
 
 ## Evals
@@ -81,7 +81,7 @@ A reviewer cites the rule and the version it read: "breaks DW-4 (dataweave 1.3.0
 Routing cases live in `plugins/<plugin>/evals/<case>/case.yaml`, in the format of `claude plugin eval`. Each case is a prompt and graders on the `Skill` tool: a grader named `loads-<skill>` asserts the skill is loaded, one named `does-not-load-<skill>` (with `min: 0`, `max: 0`) asserts it is not. Write prompts the way people ask, in more than one language when the users do.
 
 ```bash
-claude plugin eval ./plugins/mulesoft --ablation none --runs 3
+claude plugin eval ./plugins/java --ablation none --runs 3
 ```
 
 `--ablation none` makes the routing graders part of the score. Run the evals of a plugin before a pull request that changes a `description`; paste the summary in the pull request.
@@ -91,7 +91,7 @@ claude plugin eval ./plugins/mulesoft --ablation none --runs 3
 ```bash
 python3 scripts/check_repo.py
 python3 -m unittest discover -s tests -v
-claude plugin validate ./plugins/mulesoft
+claude plugin validate ./plugins/java
 ```
 
 CI runs the first two on every pull request, plus the title check.
