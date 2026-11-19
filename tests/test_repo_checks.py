@@ -161,5 +161,13 @@ class RepositoryTest(unittest.TestCase):
         self.assertIn("a person", out)
 
 
+class MovedPluginsTest(unittest.TestCase):
+    def test_the_moved_plugins_file_names_each_plugin_once(self):
+        text = (check_repo.ROOT / "docs/moved-plugins.md").read_text(encoding="utf-8")
+        names = check_repo.MOVED_ENTRY_RE.findall(text)
+        self.assertEqual(sorted(names), ["api", "mulesoft"])
+        self.assertEqual(len(names), len(set(names)))
+
+
 if __name__ == "__main__":
     unittest.main()

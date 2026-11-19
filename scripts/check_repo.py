@@ -335,6 +335,10 @@ def check_version_records(report, versions):
             report.add(f"{rel(plugin)}/package.json", f"dependency '{name}' is not a skill of this plugin")
 
 
+# docs/moved-plugins.md: one "- `<plugin>`: <where its rules went>" line per plugin that left the repository.
+MOVED_ENTRY_RE = re.compile(r"^- `([a-z0-9-]+)`:", re.M)
+
+
 def rule_ids(text):
     return RULE_ID_RE.findall(text)
 
@@ -355,15 +359,25 @@ def check_rule_ids(report, base):
     # Writing rule 6: an ID on the base never disappears (retire it instead).
     try:
         files = subprocess.run(["git", "ls-tree", "-r", "--name-only", base, "--", "plugins"], cwd=ROOT, check=True, capture_output=True, text=True).stdout.split()
-        before = set()
+        before, moved_ids = set(), set()
+        # A whole plugin that left the repository takes its rules with it, but only when
+        # docs/moved-plugins.md says where it went (a reader of an old citation finds the rule there).
+        moved = MOVED_ENTRY_RE.findall((ROOT / "docs/moved-plugins.md").read_text(encoding="utf-8")) if (ROOT / "docs/moved-plugins.md").is_file() else []
         for file in files:
             if "/skills/" in file and file.endswith(".md") and not file.endswith(("SKILL.md", "CHANGELOG.md")):
                 text = subprocess.run(["git", "show", f"{base}:{file}"], cwd=ROOT, check=True, capture_output=True, text=True).stdout
-                before.update(rule_ids(text))
+                ids = set(rule_ids(text))
+                before.update(ids)
+                plugin = file.split("/")[1]
+                if not (ROOT / "plugins" / plugin).exists():
+                    if plugin in moved:
+                        moved_ids.update(ids)
+                    else:
+                        report.add("rule IDs", f"plugin {plugin} was removed: name it in docs/moved-plugins.md with where its rules went")
     except subprocess.CalledProcessError as error:
         report.add("--base", f"cannot read {base}: {error.stderr.strip()}")
         return
-    for rule in sorted(before - current):
+    for rule in sorted(before - current - moved_ids):
         report.add("rule IDs", f"{rule} was removed; mark it retired instead (CONTRIBUTING.md, rule 6)")
 
 
