@@ -3,7 +3,7 @@ name: munit
 description: "Rules for MUnit 3 tests of Mule 4 applications: what a test asserts, mocking outbound calls, error-path tests, the coverage gate and APIkit router suites. Use when writing, changing, reviewing or fixing an MUnit test or suite under src/test/munit/, or when an MUnit run fails; recognise it by munit:test, munit-tools:mock-when or the munit-maven-plugin in a pom.xml. Triggers: MUnit, MUnit test, MUnit suite, mock-when, assert-that, Mule test coverage. Not for the flow under test itself (mulesoft skill), the DataWeave inside it (dataweave skill), or tests of a standalone DataWeave library run by the DataWeave testing framework (dataweave skill)."
 license: Apache-2.0
 metadata:
-  version: "1.0.0" # x-release-please-version
+  version: "1.1.0" # x-release-please-version
   aliases: "munit 3, munit tools"
 ---
 

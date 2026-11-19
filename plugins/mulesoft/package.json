@@ -1,13 +1,13 @@
 {
   "name": "mulesoft-plugin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "description": "Version record of the mulesoft plugin for release-please; its dependencies are its skills, so a skill release raises the plugin's version. Not an npm package.",
   "license": "Apache-2.0",
   "dependencies": {
-    "mulesoft": "1.1.0",
-    "dataweave": "1.0.1",
-    "munit": "1.0.0",
-    "mule-sdk": "1.0.1"
+    "mulesoft": "1.2.0",
+    "dataweave": "1.1.0",
+    "munit": "1.1.0",
+    "mule-sdk": "1.1.0"
   }
 }

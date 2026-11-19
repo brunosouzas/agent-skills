@@ -1,6 +1,6 @@
 {
   "name": "mulesoft",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Mule 4 applications, DataWeave, MUnit and the Mule SDK: rules with stable IDs and checks that run.",
   "author": {
     "name": "Bruno Souza"

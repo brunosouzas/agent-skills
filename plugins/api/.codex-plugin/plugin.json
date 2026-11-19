@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "REST API specifications in RAML and OpenAPI: resources, data types, errors, examples, versioning and security, as rules with stable IDs.",
   "author": {
     "name": "Bruno Souza"
