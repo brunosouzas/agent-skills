@@ -1,7 +1,0 @@
-{
-  "name": "mulesoft",
-  "version": "1.2.0",
-  "private": true,
-  "description": "Version record of the mulesoft skill for release-please; not an npm package.",
-  "license": "Apache-2.0"
-}

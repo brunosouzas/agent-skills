@@ -9,23 +9,13 @@ The technologies the repository is made of, by their usual names, comma-separate
 ```markdown
 ## Technology
 
-Stack: Mule 4, MUnit, DataWeave, Azure Pipelines
+Stack: Java, Maven, Azure Pipelines
 ```
 
-An agent loads the skill whose `name` or one of whose `metadata.aliases` matches each name, ignoring case. For the `mulesoft` plugin:
-
-| Name on the line | Skill |
-|---|---|
-| MuleSoft, Mule, Mule 4, Anypoint, APIkit, CloudHub | `mulesoft` |
-| DataWeave, DataWeave 2, DWL | `dataweave` |
-| MUnit, MUnit 3, MUnit Tools | `munit` |
-| Mule SDK, Mule extension, Mule connector, mule-plugin, dw-library | `mule-sdk` |
-
-The other plugins, one per technology (each holds the skill of the same name, except `api`, which holds `api-spec`):
+An agent loads the skill whose `name` or one of whose `metadata.aliases` matches each name, ignoring case. The MuleSoft and API skills moved to devFoundry (brunosouzas/devfoundry-plugins), which documents its own names. The plugins here, one per technology (each holds the skill of the same name):
 
 | Name on the line | Plugin and skill |
 |---|---|
-| RAML, OpenAPI, OAS, Swagger | `api`: `api-spec` |
 | Java, JDK, JUnit, Gradle, Maven, Spring Boot | `java`: `java` |
 | Python, Python 3, pytest | `python`: `python` |
 | Shell, Bash, sh, zsh, POSIX sh | `shell`: `shell` |

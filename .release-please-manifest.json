@@ -1,11 +1,4 @@
 {
-  "plugins/mulesoft/skills/mulesoft": "1.2.0",
-  "plugins/mulesoft/skills/dataweave": "1.1.0",
-  "plugins/mulesoft/skills/munit": "1.1.0",
-  "plugins/mulesoft/skills/mule-sdk": "1.1.0",
-  "plugins/mulesoft": "1.2.0",
-  "plugins/api/skills/api-spec": "1.1.0",
-  "plugins/api": "1.1.0",
   "plugins/java/skills/java": "1.0.0",
   "plugins/java": "1.0.0",
   "plugins/python/skills/python": "1.0.0",
